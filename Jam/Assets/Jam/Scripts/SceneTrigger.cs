@@ -1,24 +1,37 @@
 ﻿using System;
+using Jam.Scripts.BusEvents.ChangeTriggerZone;
 using UniRx;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
 namespace Jam.Scripts.BusEvents
 {
+    [ExecuteBefore(typeof(ChangeTrigger))]
     public class SceneTrigger : MonoBehaviour
     {
         public AssetReference Scene;
+        public ChangeTrigger Trigger;
 
-        public void OnTriggerEnter(Collider other)
+        private void OnEnable()
         {
-            if(other.CompareTag("Player"))
-                MessageBroker.Default.Publish<LoadSceneEvent>(new LoadSceneEvent{Scene = Scene});
+            Trigger.ChangeOnTriggerEnter.AddListener(OnEnter);
+            Trigger.ChangeOnTriggerExit.AddListener(OnExit);
         }
         
-        public void OnTriggerExit(Collider other)
+        private void OnDisable()
         {
-            if(other.CompareTag("Player"))
-                MessageBroker.Default.Publish<RemoveSceneEvent>(new RemoveSceneEvent{Scene = Scene});
+            Trigger.ChangeOnTriggerEnter.RemoveListener(OnEnter);
+            Trigger.ChangeOnTriggerExit.RemoveListener(OnExit);
+        }
+
+        private void OnEnter()
+        {
+            MessageBroker.Default.Publish<LoadSceneEvent>(new LoadSceneEvent{Scene = Scene});
+        }
+        
+        private void OnExit()
+        {
+            MessageBroker.Default.Publish<RemoveSceneEvent>(new RemoveSceneEvent{Scene = Scene});
         }
     }
 }
