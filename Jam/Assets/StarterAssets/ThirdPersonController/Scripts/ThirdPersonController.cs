@@ -91,7 +91,7 @@ namespace StarterAssets
         // timeout deltatime
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
-        
+
 
 #if ENABLE_INPUT_SYSTEM
         private PlayerInput _playerInput;
@@ -276,25 +276,30 @@ namespace StarterAssets
             // if there is a move input rotate player when the player is moving
             if (_input.move != Vector2.zero)
             {
-                _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
-                                  _mainCamera.transform.eulerAngles.y;
-                float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
-                    RotationSmoothTime);
-
                 // rotate to face input direction relative to camera position
                 if (!IgnoreRotationForCharacter)
                 {
+                    _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
+                                      _mainCamera.transform.eulerAngles.y;
+                    float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation,
+                        ref _rotationVelocity,
+                        RotationSmoothTime);
+
                     transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
                 }
             }
-            Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
-            
+
+
             // rotate to face input direction relative to camera position
             if (IgnoreRotationForCharacter)
             {
-                transform.rotation = Quaternion.Euler(0.0f, _mainCamera.transform.eulerAngles.y, 0.0f);
+                // transform.rotation = Quaternion.Euler(0.0f, _mainCamera.transform.eulerAngles.y, 0.0f);
+                RotatePlayerAlongMousePosition();
+                _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
+                                  transform.rotation.eulerAngles.y;
             }
 
+            Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
             // move the player
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
@@ -317,7 +322,7 @@ namespace StarterAssets
 
                 // update animator if using character
                 cc.isJumping = false;
-                
+
                 // if (_hasAnimator)
                 // {
                 //     _animator.SetBool(_animIDJump, false);
@@ -337,7 +342,7 @@ namespace StarterAssets
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
                     cc.Jump();
                     _input.jump = false;
-                    
+
                     // update animator if using character
                     // if (_hasAnimator)
                     // {
@@ -397,6 +402,24 @@ namespace StarterAssets
             Gizmos.DrawSphere(
                 new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
                 GroundedRadius);
+        }
+
+        Vector3 lookPos;
+
+        private void RotatePlayerAlongMousePosition()
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                lookPos = hit.point;
+            }
+
+            Vector3 lookDir = lookPos - transform.position;
+            lookDir.y = 0;
+
+            transform.LookAt(transform.position + lookDir, Vector3.up);
         }
 
         private void OnFootstep(AnimationEvent animationEvent)
