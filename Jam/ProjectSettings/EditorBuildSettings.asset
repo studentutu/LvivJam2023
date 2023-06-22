@@ -8,8 +8,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Jam/Scenes/MainScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Plugins/CW/LeanTouch/Examples/12 Transform.unity
-    guid: bcc6d67bd10127441a6feb2e68bfe9e8
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 687829131e01c90449e1195ef300140e, type: 2}
