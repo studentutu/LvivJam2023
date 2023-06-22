@@ -33,5 +33,10 @@ namespace Jam.Scripts.BusEvents
         {
             MessageBroker.Default.Publish<RemoveSceneEvent>(new RemoveSceneEvent{Scene = Scene});
         }
+
+        private void OnDrawGizmos()
+        {
+            
+        }
     }
 }
