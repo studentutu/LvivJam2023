@@ -15,7 +15,7 @@ namespace Jam.Scripts.BusEvents
         {
             _slider.value = 0;
 
-            MessageBroker.Default.Receive<UpdateStressEvent>()
+            MessageBroker.Default.Receive<NormalizedStressEvent>()
                 .Subscribe(x => UpdateStress(x))
                 .AddTo(_disposable);
             
@@ -27,7 +27,7 @@ namespace Jam.Scripts.BusEvents
             _disposable = new CompositeDisposable();
         }
 
-        private void UpdateStress(UpdateStressEvent data)
+        private void UpdateStress(NormalizedStressEvent data)
         {
             _slider.value = data.NormalizedStress;
         }

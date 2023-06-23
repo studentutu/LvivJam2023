@@ -16,8 +16,8 @@ namespace Jam.Scripts.BusEvents
             public float CurrentStress;
             public float CurrentPoints;
             public float TimeLeftSeconds;
-            public float MilitaryStress;
-            public float StorageStress;
+            public float MilitaryPoints;
+            public float VolonterPoints;
         }
 
         [SerializeField] private Slider _slider;
@@ -39,13 +39,17 @@ namespace Jam.Scripts.BusEvents
             MessageBroker.Default.Receive<UpdatePointsEvent>()
                 .Subscribe(x => UpdatePoints(x))
                 .AddTo(_disposable);
+            
+            MessageBroker.Default.Receive<UpdateStressDataDeltaEvent>()
+                .Subscribe(x => UpdateStress(x.Amount))
+                .AddTo(_disposable);
 
             _gameState = new GameState()
             {
                 Playing = false, CurrentStress = 0, CurrentPoints = 0,
                 TimeLeftSeconds = _InitialgameState.TimeLeftSeconds,
-                MilitaryStress = _InitialgameState.MilitaryStress,
-                StorageStress = _InitialgameState.StorageStress
+                MilitaryPoints = _InitialgameState.MilitaryPoints,
+                VolonterPoints = _InitialgameState.VolonterPoints
             };
         }
 
@@ -62,12 +66,12 @@ namespace Jam.Scripts.BusEvents
             _gameState.CurrentPoints += amount;
             if (update.Type == InteractionTypes.Shooting)
             {
-                _gameState.MilitaryStress = Normalize(_gameState.MilitaryStress, update.Ammount);
+                _gameState.MilitaryPoints = Normalize(_gameState.MilitaryPoints, update.Ammount);
             }
 
             if (update.Type == InteractionTypes.Helping)
             {
-                _gameState.StorageStress = Normalize(_gameState.StorageStress, update.Ammount);
+                _gameState.VolonterPoints = Normalize(_gameState.VolonterPoints, update.Ammount);
             }
 
             _points.text = "Points : " + _gameState.CurrentPoints.ToString("F1");
@@ -88,18 +92,23 @@ namespace Jam.Scripts.BusEvents
 
             _timeLeft.text = "TimeLeft : " + timeSpan;
 
-            _gameState.MilitaryStress -= StressDelta * Time.deltaTime;
-            _gameState.MilitaryStress = Mathf.Clamp01(_gameState.MilitaryStress);
-            _sliderMilitary.value = _gameState.MilitaryStress;
+            _gameState.MilitaryPoints -= StressDelta * Time.deltaTime;
+            _gameState.MilitaryPoints = Mathf.Clamp01(_gameState.MilitaryPoints);
+            _sliderMilitary.value = _gameState.MilitaryPoints;
             
-            _gameState.StorageStress -= StressDelta * Time.deltaTime;
-            _gameState.StorageStress = Mathf.Clamp01(_gameState.StorageStress);
-            _sliderStorage.value = _gameState.StorageStress;
+            _gameState.VolonterPoints -= StressDelta * Time.deltaTime;
+            _gameState.VolonterPoints = Mathf.Clamp01(_gameState.VolonterPoints);
+            _sliderStorage.value = _gameState.VolonterPoints;
 
-            _slider.value = (_gameState.MilitaryStress + _gameState.StorageStress) * 0.5f;
-            _gameState.CurrentStress = _slider.value;
+            UpdateStress(-StressDelta * Time.deltaTime);
+        }
+
+        private void UpdateStress(float delta)
+        {
+            _gameState.CurrentStress = Normalize (_gameState.CurrentStress, delta);
+            _slider.value = _gameState.CurrentStress;
             
-            MessageBroker.Default.Publish(new UpdateStressEvent { NormalizedStress = _gameState.CurrentStress});
+            MessageBroker.Default.Publish(new NormalizedStressEvent { NormalizedStress = _gameState.CurrentStress});
         }
     }
 }
