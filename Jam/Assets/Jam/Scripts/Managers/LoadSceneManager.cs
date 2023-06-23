@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
@@ -15,8 +14,14 @@ namespace Jam.Scripts.BusEvents
     {
         public List<AssetReference> _initialScenes;
 
-        public Dictionary<AssetReference, SceneInstance>
-            _activeScenes = new Dictionary<AssetReference, SceneInstance>();
+        public class SceneCounter
+        {
+            public SceneInstance SceneInstance;
+            public int Counter;
+        }
+
+        public Dictionary<AssetReference, SceneCounter>
+            _activeScenes = new Dictionary<AssetReference, SceneCounter>();
 
         private CompositeDisposable _disposable = new CompositeDisposable();
 
@@ -37,10 +42,9 @@ namespace Jam.Scripts.BusEvents
         {
             MessageBroker.Default.Receive<LoadSceneEvent>().Subscribe(x => LoadScene(x.Scene).Forget())
                 .AddTo(_disposable);
-            
+
             MessageBroker.Default.Receive<RemoveSceneEvent>().Subscribe(x => RemoveScene(x.Scene).Forget())
                 .AddTo(_disposable);
-            
         }
 
         private void OnDisable()
@@ -50,17 +54,28 @@ namespace Jam.Scripts.BusEvents
 
         private async UniTask RemoveScene(AssetReference scene)
         {
-            var task = Addressables.UnloadSceneAsync(_activeScenes[scene]);
-            await task;
-            _activeScenes.Remove(scene);
+            var checkIfNeedRelease = _activeScenes.ContainsKey(scene) && _activeScenes[scene].Counter <= 1;
+
+            if (checkIfNeedRelease)
+            {
+                var task = Addressables.UnloadSceneAsync(_activeScenes[scene].SceneInstance);
+                await task;
+                _activeScenes.Remove(scene);
+            }
         }
 
 
         private async UniTask<SceneInstance> LoadScene(AssetReference scene)
         {
+            if (_activeScenes.ContainsKey(scene))
+            {
+                _activeScenes[scene].Counter++;
+                return _activeScenes[scene].SceneInstance;
+            }
+
             var instance = await Addressables.LoadSceneAsync(scene, LoadSceneMode.Additive);
-            _activeScenes.Add(scene, instance);
-            
+            _activeScenes.Add(scene, new SceneCounter{SceneInstance = instance, Counter =  1});
+
             return instance;
         }
     }
