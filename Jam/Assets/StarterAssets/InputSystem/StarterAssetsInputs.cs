@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 #endif
 
-namespace StarterAssets
+namespace UnityStarterAssets
 {
 	public class StarterAssetsInputs : MonoBehaviour
 	{
@@ -12,6 +12,7 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool toggledInteraction;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -43,6 +44,11 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+		
+		public void OnInteraction(InputValue value)
+		{
+			InteractionInput(value.isPressed);
+		}
 #endif
 
 
@@ -64,6 +70,11 @@ namespace StarterAssets
 		public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
+		}
+		
+		public void InteractionInput(bool toggled)
+		{
+			toggledInteraction = toggled;
 		}
 
 		private void OnApplicationFocus(bool hasFocus)

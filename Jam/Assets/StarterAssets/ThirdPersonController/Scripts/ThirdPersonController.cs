@@ -1,28 +1,29 @@
-﻿ using UnityEngine;
-#if ENABLE_INPUT_SYSTEM 
+﻿using Invector.vCharacterController;
+using UnityEngine;
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
 
-namespace StarterAssets
+namespace UnityStarterAssets
 {
     [RequireComponent(typeof(CharacterController))]
-#if ENABLE_INPUT_SYSTEM 
+#if ENABLE_INPUT_SYSTEM
     [RequireComponent(typeof(PlayerInput))]
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
-        [Header("Player")]
-        [Tooltip("Move speed of the character in m/s")]
+        public vThirdPersonAnimator cc;
+
+        [Header("Player")] [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
 
         [Tooltip("Sprint speed of the character in m/s")]
         public float SprintSpeed = 5.335f;
 
-        [Tooltip("How fast the character turns to face movement direction")]
-        [Range(0.0f, 0.3f)]
+        [Tooltip("How fast the character turns to face movement direction")] [Range(0.0f, 0.3f)]
         public float RotationSmoothTime = 0.12f;
 
         [Tooltip("Acceleration and deceleration")]
@@ -32,8 +33,7 @@ namespace StarterAssets
         public AudioClip[] FootstepAudioClips;
         [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
 
-        [Space(10)]
-        [Tooltip("The height the player can jump")]
+        [Space(10)] [Tooltip("The height the player can jump")]
         public float JumpHeight = 1.2f;
 
         [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
@@ -50,8 +50,7 @@ namespace StarterAssets
         [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
         public bool Grounded = true;
 
-        [Tooltip("Useful for rough ground")]
-        public float GroundedOffset = -0.14f;
+        [Tooltip("Useful for rough ground")] public float GroundedOffset = -0.14f;
 
         [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
         public float GroundedRadius = 0.28f;
@@ -72,6 +71,8 @@ namespace StarterAssets
         [Tooltip("Additional degress to override the camera. Useful for fine tuning camera position when locked")]
         public float CameraAngleOverride = 0.0f;
 
+        public bool IgnoreRotationForCharacter;
+
         [Tooltip("For locking the camera position on all axis")]
         public bool LockCameraPosition = false;
 
@@ -91,17 +92,10 @@ namespace StarterAssets
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
 
-        // animation IDs
-        private int _animIDSpeed;
-        private int _animIDGrounded;
-        private int _animIDJump;
-        private int _animIDFreeFall;
-        private int _animIDMotionSpeed;
 
-#if ENABLE_INPUT_SYSTEM 
+#if ENABLE_INPUT_SYSTEM
         private PlayerInput _playerInput;
 #endif
-        private Animator _animator;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
@@ -135,44 +129,56 @@ namespace StarterAssets
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            
-            _hasAnimator = TryGetComponent(out _animator);
+
+            _hasAnimator = false; //TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
-#if ENABLE_INPUT_SYSTEM 
+#if ENABLE_INPUT_SYSTEM
             _playerInput = GetComponent<PlayerInput>();
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
-
-            AssignAnimationIDs();
 
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
 
+        protected virtual void FixedUpdate()
+        {
+            cc.SetAnimatorMoveSpeed(_input.move);
+        }
+
         private void Update()
         {
-            _hasAnimator = TryGetComponent(out _animator);
+            // _hasAnimator = TryGetComponent(out _animator);
 
             JumpAndGravity();
             GroundedCheck();
             Move();
+            InputHandle();
+            cc.UpdateAnimator(); // updates the Animator Parameters
+        }
+
+        protected virtual void InputHandle()
+        {
+            MoveInput();
+            SprintInput();
+        }
+
+        public virtual void MoveInput()
+        {
+            cc.input = _input.move;
+        }
+
+        protected virtual void SprintInput()
+        {
+            cc.Sprint(_input.sprint);
         }
 
         private void LateUpdate()
         {
             CameraRotation();
-        }
-
-        private void AssignAnimationIDs()
-        {
-            _animIDSpeed = Animator.StringToHash("Speed");
-            _animIDGrounded = Animator.StringToHash("Grounded");
-            _animIDJump = Animator.StringToHash("Jump");
-            _animIDFreeFall = Animator.StringToHash("FreeFall");
-            _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
         }
 
         private void GroundedCheck()
@@ -186,8 +192,22 @@ namespace StarterAssets
             // update animator if using character
             if (_hasAnimator)
             {
-                _animator.SetBool(_animIDGrounded, Grounded);
+                // _animator.SetBool(_animIDGrounded, Grounded);
             }
+
+            cc.isGrounded = Grounded;
+            var distance = 0f;
+            if (!Grounded)
+            {
+                distance = 0.5f;
+                if (Physics.Raycast(spherePosition, Vector3.down, out var hit, GroundedRadius, GroundLayers,
+                        QueryTriggerInteraction.Ignore))
+                {
+                    distance = hit.distance;
+                }
+            }
+
+            cc.groundDistance = distance;
         }
 
         private void CameraRotation()
@@ -207,7 +227,8 @@ namespace StarterAssets
             _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
             // Cinemachine will follow this target
-            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
+            // _cinemachineTargetPitch + CameraAngleOverride
+            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(0, // will ignore X rotation
                 _cinemachineTargetYaw, 0.0f);
         }
 
@@ -255,15 +276,28 @@ namespace StarterAssets
             // if there is a move input rotate player when the player is moving
             if (_input.move != Vector2.zero)
             {
-                _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
-                                  _mainCamera.transform.eulerAngles.y;
-                float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity,
-                    RotationSmoothTime);
-
                 // rotate to face input direction relative to camera position
-                transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                if (!IgnoreRotationForCharacter)
+                {
+                    _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
+                                      _mainCamera.transform.eulerAngles.y;
+                    float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation,
+                        ref _rotationVelocity,
+                        RotationSmoothTime);
+
+                    transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
+                }
             }
 
+
+            // rotate to face input direction relative to camera position
+            if (IgnoreRotationForCharacter)
+            {
+                // transform.rotation = Quaternion.Euler(0.0f, _mainCamera.transform.eulerAngles.y, 0.0f);
+                RotatePlayerAlongMousePosition();
+                _targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg +
+                                  transform.rotation.eulerAngles.y;
+            }
 
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 
@@ -272,11 +306,11 @@ namespace StarterAssets
                              new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 
             // update animator if using character
-            if (_hasAnimator)
-            {
-                _animator.SetFloat(_animIDSpeed, _animationBlend);
-                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
-            }
+            // if (_hasAnimator)
+            // {
+            //     _animator.SetFloat(_animIDSpeed, _animationBlend);
+            //     _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
+            // }
         }
 
         private void JumpAndGravity()
@@ -287,11 +321,13 @@ namespace StarterAssets
                 _fallTimeoutDelta = FallTimeout;
 
                 // update animator if using character
-                if (_hasAnimator)
-                {
-                    _animator.SetBool(_animIDJump, false);
-                    _animator.SetBool(_animIDFreeFall, false);
-                }
+                cc.isJumping = false;
+
+                // if (_hasAnimator)
+                // {
+                //     _animator.SetBool(_animIDJump, false);
+                //     _animator.SetBool(_animIDFreeFall, false);
+                // }
 
                 // stop our velocity dropping infinitely when grounded
                 if (_verticalVelocity < 0.0f)
@@ -304,12 +340,14 @@ namespace StarterAssets
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+                    cc.Jump();
+                    _input.jump = false;
 
                     // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDJump, true);
-                    }
+                    // if (_hasAnimator)
+                    // {
+                    //     _animator.SetBool(_animIDJump, true);
+                    // }
                 }
 
                 // jump timeout
@@ -331,14 +369,11 @@ namespace StarterAssets
                 else
                 {
                     // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDFreeFall, true);
-                    }
+                    // if (_hasAnimator)
+                    // {
+                    //     _animator.SetBool(_animIDFreeFall, true);
+                    // }
                 }
-
-                // if we are not grounded, do not jump
-                _input.jump = false;
             }
 
             // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
@@ -369,6 +404,24 @@ namespace StarterAssets
                 GroundedRadius);
         }
 
+        Vector3 lookPos;
+
+        private void RotatePlayerAlongMousePosition()
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                lookPos = hit.point;
+            }
+
+            Vector3 lookDir = lookPos - transform.position;
+            lookDir.y = 0;
+
+            transform.LookAt(transform.position + lookDir, Vector3.up);
+        }
+
         private void OnFootstep(AnimationEvent animationEvent)
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
@@ -376,7 +429,8 @@ namespace StarterAssets
                 if (FootstepAudioClips.Length > 0)
                 {
                     var index = Random.Range(0, FootstepAudioClips.Length);
-                    AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                    AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center),
+                        FootstepAudioVolume);
                 }
             }
         }
@@ -385,7 +439,8 @@ namespace StarterAssets
         {
             if (animationEvent.animatorClipInfo.weight > 0.5f)
             {
-                AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
+                AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center),
+                    FootstepAudioVolume);
             }
         }
     }
