@@ -35,7 +35,7 @@ namespace Jam.Scripts.BusEvents
         private void ChangeInteraction(InteractionTypes newInteraction)
         {
             if (_currentInteraction != null)
-                _currentInteraction.InteractionStop();
+                _currentInteraction.InteractionStop(newInteraction);
 
             CurrentInteraction = newInteraction;
             _currentInteraction = Interactions.Find(x => x.Type == CurrentInteraction);
@@ -59,7 +59,7 @@ namespace Jam.Scripts.BusEvents
             if (interactInUse)
                 _currentInteraction.InteractionStart();
             else
-                _currentInteraction.InteractionStop();
+                _currentInteraction.InteractionStop(CurrentInteraction);
         }
 
         private void UpdateStressLevel()

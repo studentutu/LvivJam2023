@@ -12,7 +12,7 @@
             
         }
 
-        public override void InteractionStop()
+        public override void InteractionStop(InteractionTypes newType)
         {
            
         }

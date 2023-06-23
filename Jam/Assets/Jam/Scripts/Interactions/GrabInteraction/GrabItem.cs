@@ -1,12 +1,34 @@
 ﻿using System;
+using Jam.Scripts.BusEvents.BusEvents.Interactions;
+using UniRx;
 using UnityEngine;
 
 namespace Jam.Scripts.BusEvents.GrabInteraction
 {
     public class GrabItem : MonoBehaviour
     {
+        public InteractionTypes UsedInInteraction;
+        
         public Collider collider;
         public Rigidbody _rb;
+        private CompositeDisposable _disposable = new CompositeDisposable();
+
+        private void OnEnable()
+        {
+            MessageBroker.Default.Receive<ChangeInteractionEvent>().Subscribe(x =>
+            {
+                if (x.Interaction != UsedInInteraction)
+                {
+                    Release();
+                    TryDestroy();
+                }
+            }).AddTo(_disposable);
+        }
+
+        private void OnDisable()
+        {
+            _disposable.Dispose();
+        }
 
         public void AttachTo( Transform parent)
         {
@@ -19,6 +41,15 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
         public void Release()
         {
             collider.transform.SetParent(null, true);
+        }
+
+        private bool destroyed = false;
+        public void TryDestroy()
+        {
+            if(destroyed)
+               return;
+            destroyed = true;
+            GameObject.Destroy(collider.gameObject);
         }
     }
 }
