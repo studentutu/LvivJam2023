@@ -184,7 +184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5813683596932765204
 Transform:
   m_ObjectHideFlags: 0
@@ -200,7 +200,7 @@ Transform:
   - {fileID: 6596760842749365685}
   - {fileID: 4570087610152428976}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2751002960199033418
 Animator:
@@ -1756,20 +1756,20 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -137426782206453305, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
+  - {fileID: -8315153164729658022, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
   - {fileID: -8622403239401540871, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
   - {fileID: -606304108404988304, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
-  - {fileID: -5243988174349660497, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
+  - {fileID: -365713141506684509, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
   - {fileID: -365713141506684509, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
   - {fileID: -5807305210560605457, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
   - {fileID: -8315153164729658022, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
-  - {fileID: 8083161380761691115, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
-  - {fileID: 8440520647920051447, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
-  - {fileID: 2799379806601349756, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
+  - {fileID: 6392103381914761776, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
+  - {fileID: -3282308706119680366, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
+  - {fileID: -2801680016148302568, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
   - {fileID: 54639450041463998, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
-  - {fileID: -661879226550912531, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
-  - {fileID: -8687004137499329633, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
-  - {fileID: -4245119772211814133, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
+  - {fileID: 0}
+  - {fileID: -2801680016148302568, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
+  - {fileID: -2801680016148302568, guid: df1bc4b60d2e9ef4fa5a9d3cee023e39, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
