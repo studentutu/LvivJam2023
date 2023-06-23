@@ -124,8 +124,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 50
-  BulletDamage: 1
+  BulletDamage: 25
   Lifetime: 2
+  OnCollisionVFx: {fileID: 0}
 --- !u!54 &2884311631783029110
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -4,7 +4,6 @@ using Jam.Scripts.BusEvents.BusEvents.Interactions;
 using TMPro;
 using UniRx;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 using UnityEngine.Scripting;
 using UnityEngine.UI;
@@ -28,6 +27,8 @@ namespace Jam.Scripts.BusEvents
         [SerializeField] private Slider _sliderMilitary;
         [SerializeField] private Slider _sliderStorage;
         [SerializeField] private float StressDelta = 1f;
+        [SerializeField] private float DownPointMilitary = 1f;
+        [SerializeField] private float DownPointVolontery = 1f;
         [SerializeField] private TMP_Text _points;
         [SerializeField] private TMP_Text _timeLeft;
         [SerializeField] private GameState _InitialgameState;
@@ -124,11 +125,11 @@ namespace Jam.Scripts.BusEvents
 
             _timeLeft.text = "TimeLeft : " + timeSpan;
 
-            _gameState.MilitaryPoints -= StressDelta * Time.deltaTime;
+            _gameState.MilitaryPoints -= DownPointMilitary * Time.deltaTime;
             _gameState.MilitaryPoints = Mathf.Clamp01(_gameState.MilitaryPoints);
             _sliderMilitary.value = _gameState.MilitaryPoints;
 
-            _gameState.VolonterPoints -= StressDelta * Time.deltaTime;
+            _gameState.VolonterPoints -= DownPointVolontery * Time.deltaTime;
             _gameState.VolonterPoints = Mathf.Clamp01(_gameState.VolonterPoints);
             _sliderStorage.value = _gameState.VolonterPoints;
 

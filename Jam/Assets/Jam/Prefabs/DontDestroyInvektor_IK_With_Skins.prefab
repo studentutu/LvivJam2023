@@ -3060,7 +3060,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 8737902268081580506, guid: 808f3c9a8fc984f40a17e776f853a326, type: 3}
   SecondsBetweenShots: 0.2
   PointForDamage: 10
-  PointForKill: 10
+  PointForKill: 20
   StressForShot: 2
   spawnPoint: {fileID: 5906130193299758054}
   _shotClip: {fileID: 8300000, guid: f9517356afb533a41b9e7cb6f155031e, type: 3}
@@ -4033,11 +4033,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3228245071709183705, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3228245071709183705, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -7.5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860394107451741736, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4797159503948515129, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
       propertyPath: m_Name
