@@ -3061,6 +3061,7 @@ MonoBehaviour:
   SecondsBetweenShots: 0.2
   PointForDamage: 10
   PointForKill: 10
+  StressForShot: 2
   spawnPoint: {fileID: 5906130193299758054}
   _shotClip: {fileID: 8300000, guid: f9517356afb533a41b9e7cb6f155031e, type: 3}
 --- !u!114 &6246097418802800884
@@ -4014,6 +4015,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4628460346164731882}
     m_Modifications:
+    - target: {fileID: 1298857681856825410, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.5999985
+      objectReference: {fileID: 0}
     - target: {fileID: 1303257716486283226, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4021,6 +4026,18 @@ PrefabInstance:
     - target: {fileID: 1303257716486283226, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303257716486283226, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228245071709183705, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228245071709183705, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 4797159503948515129, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
       propertyPath: m_Name
