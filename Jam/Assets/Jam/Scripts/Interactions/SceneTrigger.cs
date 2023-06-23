@@ -24,12 +24,12 @@ namespace Jam.Scripts.BusEvents
             Trigger.ChangeOnTriggerExit.RemoveListener(OnExit);
         }
 
-        private void OnEnter()
+        public void OnEnter()
         {
             MessageBroker.Default.Publish<LoadSceneEvent>(new LoadSceneEvent{Scene = Scene});
         }
         
-        private void OnExit()
+        public void OnExit()
         {
             MessageBroker.Default.Publish<RemoveSceneEvent>(new RemoveSceneEvent{Scene = Scene});
         }

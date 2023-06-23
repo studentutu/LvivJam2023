@@ -40,7 +40,7 @@ namespace Jam.Scripts.BusEvents
             enabled = true;
         }
 
-        public override void InteractionStop()
+        public override void InteractionStop(InteractionTypes newType)
         {
             _canShoot = false;
             _shootCooldown = 0;
