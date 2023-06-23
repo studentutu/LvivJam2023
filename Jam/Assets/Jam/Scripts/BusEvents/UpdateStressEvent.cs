@@ -3,7 +3,7 @@
     /// <summary>
     ///     From o to 100
     /// </summary>
-    public class UpdateStressEvent
+    public class NormalizedStressEvent
     {
         public float NormalizedStress;
     }

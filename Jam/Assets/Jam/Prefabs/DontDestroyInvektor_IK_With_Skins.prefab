@@ -3043,6 +3043,7 @@ MonoBehaviour:
   - {fileID: 1902528671700902342}
   - {fileID: 6246097418802800884}
   - {fileID: 5148630612768599476}
+  OnInteractionCHange: {fileID: 100000, guid: 979632a27455af442bd2d8f36eb0ffce, type: 3}
 --- !u!114 &1902528671700902342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3058,8 +3059,10 @@ MonoBehaviour:
   Type: 1
   _bulletPrefab: {fileID: 8737902268081580506, guid: 808f3c9a8fc984f40a17e776f853a326, type: 3}
   SecondsBetweenShots: 0.2
+  PointForDamage: 10
+  PointForKill: 20
+  StressForShot: 2
   spawnPoint: {fileID: 5906130193299758054}
-  StressUpdateDelta: 20
   _shotClip: {fileID: 8300000, guid: f9517356afb533a41b9e7cb6f155031e, type: 3}
 --- !u!114 &6246097418802800884
 MonoBehaviour:
@@ -4012,6 +4015,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4628460346164731882}
     m_Modifications:
+    - target: {fileID: 1298857681856825410, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.5999985
+      objectReference: {fileID: 0}
     - target: {fileID: 1303257716486283226, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4019,6 +4026,22 @@ PrefabInstance:
     - target: {fileID: 1303257716486283226, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303257716486283226, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228245071709183705, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3228245071709183705, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860394107451741736, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4797159503948515129, guid: db21dd0a68de54c4ab7f29934b4a9739, type: 3}
       propertyPath: m_Name
