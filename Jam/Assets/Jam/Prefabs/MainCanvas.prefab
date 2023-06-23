@@ -147,7 +147,7 @@ RectTransform:
   m_Children:
   - {fileID: 8781615960670851733}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -232,7 +232,7 @@ MonoBehaviour:
   _slider: {fileID: 7051602145853665858}
   _points: {fileID: 6539270541284556446}
   _timeLeft: {fileID: 2408699720064112991}
-  _gameState:
+  _InitialgameState:
     Playing: 0
     CurrentStress: 0
     CurrentPoints: 0
@@ -937,6 +937,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -4.9999695, y: 0}
+  m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
