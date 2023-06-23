@@ -11,6 +11,8 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
         
         public Collider collider;
         public Rigidbody _rb;
+        public GameObject OnDestroyVFX;
+        
         private CompositeDisposable _disposable = new CompositeDisposable();
 
         private void OnEnable()
@@ -48,7 +50,12 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
         {
             if(destroyed)
                return;
+            
             destroyed = true;
+
+            if(OnDestroyVFX != null)
+                GameObject.Instantiate(OnDestroyVFX, transform.position, Quaternion.identity);
+            
             GameObject.Destroy(collider.gameObject);
         }
     }

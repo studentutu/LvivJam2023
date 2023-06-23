@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7864170564992402128, guid: a7b7054a981a5174d90b0036e899380d, type: 3}
       propertyPath: m_IsKinematic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8040448134171097036, guid: a7b7054a981a5174d90b0036e899380d, type: 3}
       propertyPath: CrateType
