@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using StarterAssets;
+using UnityStarterAssets;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

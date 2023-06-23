@@ -316,7 +316,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388337918323885403}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.7036077, z: -1.5683519}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -435,6 +435,7 @@ MonoBehaviour:
   look: {x: 0, y: 0}
   jump: 0
   sprint: 0
+  toggledInteraction: 0
   analogMovement: 0
   cursorLocked: 0
   cursorInputForLook: 1
@@ -589,12 +590,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'VBOT_:LeftHand'\n\tTransform 'VBOT_:LeftForeArm'\n\tTransform
-    'VBOT_:RightArm'\n\tTransform 'VBOT_:LeftArm'\n\tTransform 'VBOT_:RightForeArm'\n\tTransform
-    'VBOT_:RightHand'\n\tTransform 'VBOT_:LeftHand'\n\tTransform 'VBOT_:LeftForeArm'\n\tTransform
-    'VBOT_:RightArm'\n\tTransform 'VBOT_:LeftArm'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -606,7 +602,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 388337918323885403}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fff0960ef4ea6e04eac66b4a7fd2189d, type: 3}
   m_Name: 
@@ -3561,6 +3557,7 @@ GameObject:
   - component: {fileID: 7043509502620905639}
   - component: {fileID: 5208735833520937174}
   - component: {fileID: 3024091635294024720}
+  - component: {fileID: 8433028816354627143}
   m_Layer: 0
   m_Name: DontDestroyInvektor
   m_TagString: Untagged
@@ -3585,7 +3582,7 @@ Transform:
   - {fileID: 3319437947382811982}
   - {fileID: 3513818861083318972}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5208735833520937174
 MonoBehaviour:
@@ -3612,7 +3609,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df68560213db450783d264f1c2d18a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentInteraction: 0
+  _input: {fileID: 2002412725940444141}
+  CurrentInteraction: 1
+  Interactions:
+  - {fileID: 8433028816354627143}
+--- !u!114 &8433028816354627143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4804366687483465663}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2bff6c13f624e6581f090015ad55b84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 1
+  _bulletPrefab: {fileID: 8737902268081580506, guid: 808f3c9a8fc984f40a17e776f853a326, type: 3}
+  SecondsBetweenShots: 0.3
+  spawnPoint: {fileID: 7286727255675322729}
 --- !u!1 &4884107659196227402
 GameObject:
   m_ObjectHideFlags: 0
@@ -6744,7 +6760,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9062813389088206155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.339, z: 0.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7207,7 +7223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_target: {fileID: 6793162967280975189}
-  m_cameraOffsets: {x: 0, y: 8, z: -6}
+  m_cameraOffsets: {x: 0, y: 4, z: -3}
 --- !u!4 &3513818861083318972 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
