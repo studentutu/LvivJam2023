@@ -35,7 +35,7 @@ namespace Jam.Scripts.BusEvents
         private void ChangeInteraction(InteractionTypes newInteraction)
         {
             if (OnInteractionCHange != null)
-                GameObject.Instantiate(OnInteractionCHange, transform.position, quaternion.identity);
+                GameObject.Instantiate(OnInteractionCHange, _input.transform.position, quaternion.identity);
             
             if (_currentInteraction != null)
                 _currentInteraction.InteractionStop(newInteraction);

@@ -3043,6 +3043,7 @@ MonoBehaviour:
   - {fileID: 1902528671700902342}
   - {fileID: 6246097418802800884}
   - {fileID: 5148630612768599476}
+  OnInteractionCHange: {fileID: 100000, guid: 979632a27455af442bd2d8f36eb0ffce, type: 3}
 --- !u!114 &1902528671700902342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3059,7 +3060,6 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 8737902268081580506, guid: 808f3c9a8fc984f40a17e776f853a326, type: 3}
   SecondsBetweenShots: 0.2
   spawnPoint: {fileID: 5906130193299758054}
-  StressUpdateDelta: 20
   _shotClip: {fileID: 8300000, guid: f9517356afb533a41b9e7cb6f155031e, type: 3}
 --- !u!114 &6246097418802800884
 MonoBehaviour:
