@@ -1,5 +1,4 @@
-﻿
-using UniRx;
+﻿using UniRx;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -27,13 +26,15 @@ namespace Jam.Scripts.BusEvents
             PlayBloodParticles();
 
             if (InitialHealth <= 0)
+            {
                 OnDead?.Invoke();
-            MessageBroker.Default.Publish(new TookDamageEvent { Damage = damage, IsDead = InitialHealth <= 0 });
+                MessageBroker.Default.Publish(new TookDamageEvent { Damage = damage, IsDead = InitialHealth <= 0 });
 
-            GameObject.Destroy(this.gameObject);
+                GameObject.Destroy(this.gameObject);
+            }
         }
 
-        public void PlayBloodParticles()
+        private void PlayBloodParticles()
         {
             int m_randSpawn = Random.Range(0, 3);
             GameObject blood = Instantiate(m_bloodParticleSystem, m_bloodSpawnPoints[m_randSpawn].transform);
