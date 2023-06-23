@@ -301,6 +301,8 @@ GameObject:
   - component: {fileID: 3011908989590164222}
   - component: {fileID: 6451520421814487501}
   - component: {fileID: 1522905427348104090}
+  - component: {fileID: 122660644918037002}
+  - component: {fileID: 2347176382013170484}
   m_Layer: 8
   m_Name: PlayerArmature
   m_TagString: Player
@@ -700,6 +702,44 @@ MonoBehaviour:
   - {fileID: 6967832930256833062}
   - {fileID: 4849052661442229408}
   - {fileID: 3862486208876829642}
+--- !u!136 &122660644918037002
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388337918323885403}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.46
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &2347176382013170484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388337918323885403}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e207b6dfe0f448559957a3f6f3534f5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 2
+  AttachToPoint: {fileID: 7286727255675322729}
+  Force: 5
 --- !u!1 &459902853052775516
 GameObject:
   m_ObjectHideFlags: 0
@@ -3558,6 +3598,7 @@ GameObject:
   - component: {fileID: 5208735833520937174}
   - component: {fileID: 3024091635294024720}
   - component: {fileID: 8433028816354627143}
+  - component: {fileID: 7324444737475787423}
   m_Layer: 0
   m_Name: DontDestroyInvektor
   m_TagString: Untagged
@@ -3610,9 +3651,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _input: {fileID: 2002412725940444141}
-  CurrentInteraction: 1
+  CurrentInteraction: 0
   Interactions:
   - {fileID: 8433028816354627143}
+  - {fileID: 7324444737475787423}
+  - {fileID: 2347176382013170484}
 --- !u!114 &8433028816354627143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3629,6 +3672,19 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 8737902268081580506, guid: 808f3c9a8fc984f40a17e776f853a326, type: 3}
   SecondsBetweenShots: 0.3
   spawnPoint: {fileID: 7286727255675322729}
+--- !u!114 &7324444737475787423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4804366687483465663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c4e448506b4843b4f70d48559dc71f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 0
 --- !u!1 &4884107659196227402
 GameObject:
   m_ObjectHideFlags: 0

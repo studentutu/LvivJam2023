@@ -27,6 +27,16 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aa0f450499c7c83479b7a80f9dc42a9c
+    m_Address: Assets/Jam/Scenes/ShootingZone 1.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b99a1924832b66642967479c8db3b531
+    m_Address: Assets/Jam/Scenes/NoneZone.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 2d9c5f516db727e409d2b0e3c62c0e45, type: 2}
   m_SchemaSet:

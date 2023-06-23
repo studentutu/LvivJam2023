@@ -6,6 +6,8 @@ namespace Jam.Scripts.BusEvents
     {
         public InteractionTypes Type = InteractionTypes.None;
 
+        public abstract bool IsInAction(); 
+
         public abstract void InteractionStart();
 
         public abstract  void InteractionStop();

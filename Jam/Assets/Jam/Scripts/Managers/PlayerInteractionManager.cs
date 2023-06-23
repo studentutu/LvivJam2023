@@ -11,6 +11,7 @@ namespace Jam.Scripts.BusEvents
     {
         public StarterAssetsInputs _input;
         public InteractionTypes CurrentInteraction;
+        public float StressDelta = 2f;
         public List<IInteraction> Interactions = new List<IInteraction>();
 
 
@@ -47,17 +48,37 @@ namespace Jam.Scripts.BusEvents
 
             if (_currentInteraction == null)
                 return;
+            UpdateStressLevel();
 
-            if (interactInUse && _currentInteraction.enabled)
+            if (interactInUse && _currentInteraction.IsInAction())
                 return;
 
-            if (!interactInUse && !_currentInteraction.enabled)
+            if (!interactInUse && !_currentInteraction.IsInAction())
                 return;
 
             if (interactInUse)
                 _currentInteraction.InteractionStart();
             else
                 _currentInteraction.InteractionStop();
+        }
+
+        private void UpdateStressLevel()
+        {
+            var amount = StressDelta*Time.deltaTime;
+            var increase = true;
+
+            switch (CurrentInteraction)
+            {
+                case InteractionTypes.None:
+                    increase = false;
+                    break;
+                case InteractionTypes.Shooting:
+                    break;
+                case InteractionTypes.Helping:
+                    break;
+            }
+            
+            MessageBroker.Default.Publish(new UpdateStressEvent{Increase = increase, Ammount = amount});
         }
     }
 }

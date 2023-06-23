@@ -28,6 +28,11 @@ namespace Jam.Scripts.BusEvents
             bullet.transform.forward = spawnPoint.forward;
         }
 
+        public override bool IsInAction()
+        {
+            return enabled;
+        }
+
         public override void InteractionStart()
         {
             _canShoot = true;
