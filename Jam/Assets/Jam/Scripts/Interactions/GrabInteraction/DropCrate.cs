@@ -16,9 +16,11 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
             if (!other.TryGetComponent<DropCrateZoneTrigger>(out var trigger))
                 return;
 
-            var increase = trigger.CrateType == CrateType;
+            if(trigger.CrateType != CrateType)
+                return;
+            
             MessageBroker.Default.Publish(
-                new UpdatePointsEvent { Increase = increase, Ammount = PointAmmountToReceive });
+                new UpdatePointsEvent { Increase = true, Ammount = PointAmmountToReceive });
 
             _itemSelf.Release();
             _itemSelf.TryDestroy();
