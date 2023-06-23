@@ -937,7 +937,7 @@ MonoBehaviour:
   _slider: {fileID: 7051602145853665858}
   _sliderMilitary: {fileID: 2891627028678341772}
   _sliderStorage: {fileID: 1496838488452051319}
-  StressDelta: 0.05
+  StressDelta: 0.0001
   DownPointMilitary: 0.05
   DownPointVolontery: 0.05
   _points: {fileID: 6539270541284556446}
