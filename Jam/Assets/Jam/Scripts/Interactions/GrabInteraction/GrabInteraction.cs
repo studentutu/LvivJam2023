@@ -1,6 +1,4 @@
-﻿using System;
-using ModestTree;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Jam.Scripts.BusEvents.GrabInteraction
 {
@@ -34,7 +32,7 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
             _interactingWith.AttachTo(AttachToPoint);
         }
 
-        public override void InteractionStop()
+        public override void InteractionStop(InteractionTypes possibleNewZone)
         {
             if (_interactingWith == null)
                 return;
@@ -43,6 +41,8 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
             _interactingWith._rb.isKinematic = false;
             _interactingWith._rb.AddForce(AttachToPoint.forward * Force, ForceMode.Impulse);
 
+            if(possibleNewZone != Type)
+                _interactingWith.TryDestroy();
 
             _interactingWith = null;
         }

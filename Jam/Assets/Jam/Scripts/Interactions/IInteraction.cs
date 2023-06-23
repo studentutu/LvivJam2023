@@ -10,6 +10,6 @@ namespace Jam.Scripts.BusEvents
 
         public abstract void InteractionStart();
 
-        public abstract  void InteractionStop();
+        public abstract  void InteractionStop(InteractionTypes possibleNewZone);
     }
 }

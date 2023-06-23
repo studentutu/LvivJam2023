@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 63027245401330775}
   - component: {fileID: 2003225456855765313}
   - component: {fileID: 4272899527017370953}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SceneLoadUnloadTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce47aba6777347cda56394ae8ccd7a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bounds: {fileID: 2003225456855765313}
   ChangeOnTriggerEnter:
     m_PersistentCalls:
       m_Calls: []
