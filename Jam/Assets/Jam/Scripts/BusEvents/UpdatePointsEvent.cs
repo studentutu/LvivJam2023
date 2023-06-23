@@ -2,6 +2,7 @@
 {
     public class UpdatePointsEvent
     {
+        public InteractionTypes Type;
         public bool Increase = true;
         public float Ammount;
     }

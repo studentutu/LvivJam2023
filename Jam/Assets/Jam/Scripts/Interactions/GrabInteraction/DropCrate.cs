@@ -20,7 +20,7 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
                 return;
             
             MessageBroker.Default.Publish(
-                new UpdatePointsEvent { Increase = true, Ammount = PointAmmountToReceive });
+                new UpdatePointsEvent { Increase = true,Type = _itemSelf.UsedInInteraction,Ammount = PointAmmountToReceive });
 
             _itemSelf.Release();
             _itemSelf.TryDestroy();
