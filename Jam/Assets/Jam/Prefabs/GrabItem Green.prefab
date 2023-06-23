@@ -8,9 +8,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1726057362270886946, guid: a7b7054a981a5174d90b0036e899380d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c3435b7cf3210044b3a24266d8aebf1, type: 2}
     - target: {fileID: 4733876945211854283, guid: a7b7054a981a5174d90b0036e899380d, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4733876945211854283, guid: a7b7054a981a5174d90b0036e899380d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,6 +56,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7864170564992402128, guid: a7b7054a981a5174d90b0036e899380d, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8040448134171097036, guid: a7b7054a981a5174d90b0036e899380d, type: 3}
       propertyPath: CrateType
       value: 1
@@ -62,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8919228759023812789, guid: a7b7054a981a5174d90b0036e899380d, type: 3}
       propertyPath: m_Name
-      value: GrabItem Variant
+      value: GrabItem Green
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
