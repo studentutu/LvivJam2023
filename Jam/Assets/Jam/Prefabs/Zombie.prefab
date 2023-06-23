@@ -1063,7 +1063,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4215983090858412}
-  - component: {fileID: 95895581017439486}
   - component: {fileID: 54214124790015346}
   - component: {fileID: 136901979377959124}
   - component: {fileID: 135942970535976662}
@@ -1111,27 +1110,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95895581017439486
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456616397176492}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: fe2eb0b4e90413643a3ddc78c368140f, type: 3}
-  m_Controller: {fileID: 9100000, guid: e10558744504b244599302a4ca2e3be3, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!54 &54214124790015346
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1215,7 +1193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a3c2e8cb7f47e092083fe7107b2083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_animator: {fileID: 95895581017439486}
+  m_animator: {fileID: 0}
   m_bloodParticleSystem: {fileID: 1005937657343150, guid: cbe19ab63938c16498f0457cfa42f8f7, type: 3}
   m_bloodSpawnPoints:
   - {fileID: 1436613591901006}
