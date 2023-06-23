@@ -894,7 +894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -937,9 +937,9 @@ MonoBehaviour:
   _slider: {fileID: 7051602145853665858}
   _sliderMilitary: {fileID: 2891627028678341772}
   _sliderStorage: {fileID: 1496838488452051319}
-  StressDelta: 0.0001
-  DownPointMilitary: 0.05
-  DownPointVolontery: 0.05
+  StressDelta: 2
+  DownPointMilitary: 0.01
+  DownPointVolontery: 0.01
   _points: {fileID: 6539270541284556446}
   _timeLeft: {fileID: 2408699720064112991}
   _InitialgameState:

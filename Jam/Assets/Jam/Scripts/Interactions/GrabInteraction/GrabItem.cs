@@ -21,10 +21,7 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
             MessageBroker.Default.Receive<ChangeInteractionEvent>().Subscribe(x =>
             {
                 if (x.Interaction != UsedInInteraction)
-                {
-                    Release();
                     TryDestroy();
-                }
             }).AddTo(_disposable);
         }
 

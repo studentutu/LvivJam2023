@@ -1585,18 +1585,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1902528671700902342, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
-      propertyPath: PointForKill
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1902528671700902342, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
-      propertyPath: StressForShot
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1902528671700902342, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
-      propertyPath: PointForDamage
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 6105923758463724747, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2252,29 +2240,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1550830929787461821, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1550830929787461821, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2893054379541253401, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
       propertyPath: m_Name
       value: MainCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4498068663843354784, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4498068663843354784, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4947331122350496576, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
-      propertyPath: StressDelta
-      value: 0.0001
       objectReference: {fileID: 0}
     - target: {fileID: 6008960660905970634, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
       propertyPath: m_Pivot.x
