@@ -3610,7 +3610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _input: {fileID: 2002412725940444141}
-  CurrentInteraction: 1
+  CurrentInteraction: 0
   Interactions:
   - {fileID: 8433028816354627143}
 --- !u!114 &8433028816354627143
