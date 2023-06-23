@@ -5,7 +5,6 @@
     /// </summary>
     public class UpdateStressEvent
     {
-        public bool Increase;
-        public float Ammount;
+        public float NormalizedStress;
     }
 }
