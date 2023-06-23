@@ -20,8 +20,8 @@ namespace Jam.Scripts.BusEvents
             public int Counter;
         }
 
-        public Dictionary<AssetReference, SceneCounter>
-            _activeScenes = new Dictionary<AssetReference, SceneCounter>();
+        public Dictionary<string, SceneCounter>
+            _activeScenes = new Dictionary<string, SceneCounter>();
 
         private CompositeDisposable _disposable = new CompositeDisposable();
 
@@ -54,27 +54,31 @@ namespace Jam.Scripts.BusEvents
 
         private async UniTask RemoveScene(AssetReference scene)
         {
-            var checkIfNeedRelease = _activeScenes.ContainsKey(scene) && _activeScenes[scene].Counter <= 1;
+            if(_activeScenes.ContainsKey(scene.AssetGUID))
+                _activeScenes[scene.AssetGUID].Counter--;
+            await UniTask.DelayFrame(2);
+            
+            var checkIfNeedRelease = _activeScenes.ContainsKey(scene.AssetGUID) && _activeScenes[scene.AssetGUID].Counter < 1;
 
             if (checkIfNeedRelease)
             {
-                var task = Addressables.UnloadSceneAsync(_activeScenes[scene].SceneInstance);
+                var task = Addressables.UnloadSceneAsync(_activeScenes[scene.AssetGUID].SceneInstance);
                 await task;
-                _activeScenes.Remove(scene);
+                _activeScenes.Remove(scene.AssetGUID);
             }
         }
 
 
         private async UniTask<SceneInstance> LoadScene(AssetReference scene)
         {
-            if (_activeScenes.ContainsKey(scene))
+            if (_activeScenes.ContainsKey(scene.AssetGUID))
             {
-                _activeScenes[scene].Counter++;
-                return _activeScenes[scene].SceneInstance;
+                _activeScenes[scene.AssetGUID].Counter++;
+                return _activeScenes[scene.AssetGUID].SceneInstance;
             }
 
             var instance = await Addressables.LoadSceneAsync(scene, LoadSceneMode.Additive);
-            _activeScenes.Add(scene, new SceneCounter{SceneInstance = instance, Counter =  1});
+            _activeScenes.Add(scene.AssetGUID, new SceneCounter{SceneInstance = instance, Counter =  1});
 
             return instance;
         }
