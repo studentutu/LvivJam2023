@@ -1,4 +1,4 @@
-﻿using Jam.Scripts.BusEvents.BusEvents.Interactions;
+﻿
 using UniRx;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,7 +10,7 @@ namespace Jam.Scripts.BusEvents
         public Animator m_animator;
         public GameObject m_bloodParticleSystem;
         public GameObject[] m_bloodSpawnPoints;
-        
+
         public float InitialHealth = 100;
         public UnityEvent OnDead;
         public UnityEvent OnTakeDamage;
@@ -25,15 +25,14 @@ namespace Jam.Scripts.BusEvents
             InitialHealth -= damage;
             OnTakeDamage?.Invoke();
             PlayBloodParticles();
-            
-            MessageBroker.Default.Publish(new UpdatePointsEvent{Increase = true, Type = InteractionTypes.Shooting, Ammount = damage});
-            if(InitialHealth <=0)
+
+            if (InitialHealth <= 0)
                 OnDead?.Invoke();
-            
+            MessageBroker.Default.Publish(new TookDamageEvent { Damage = damage, IsDead = InitialHealth <= 0 });
+
             GameObject.Destroy(this.gameObject);
-            
         }
-        
+
         public void PlayBloodParticles()
         {
             int m_randSpawn = Random.Range(0, 3);

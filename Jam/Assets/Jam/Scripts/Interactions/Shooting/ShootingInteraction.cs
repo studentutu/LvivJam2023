@@ -1,4 +1,7 @@
-﻿using Jam.Scripts.BusEvents.Misc;
+﻿using System;
+using Jam.Scripts.BusEvents.BusEvents.Interactions;
+using Jam.Scripts.BusEvents.Misc;
+using UniRx;
 using UnityEngine;
 
 namespace Jam.Scripts.BusEvents
@@ -7,11 +10,26 @@ namespace Jam.Scripts.BusEvents
     {
         [SerializeField] private Bullet _bulletPrefab;
         [SerializeField] private float SecondsBetweenShots = 0.3f;
+        [SerializeField] private float PointForDamage = 2f;
+        [SerializeField] private float PointForKill = 10f;
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private AudioClip _shotClip;
 
         private bool _canShoot;
         private float _shootCooldown;
+        private CompositeDisposable _disposable = new CompositeDisposable();
+
+        private void OnEnable()
+        {
+            MessageBroker.Default.Receive<TookDamageEvent>().Subscribe(x => ProcessDamageEvent(x))
+                .AddTo(_disposable);
+        }
+
+        private void OnDisable()
+        {
+            _disposable?.Dispose();
+            _disposable = new CompositeDisposable();
+        }
 
         private void Update()
         {
@@ -46,6 +64,20 @@ namespace Jam.Scripts.BusEvents
             _canShoot = false;
             _shootCooldown = 0;
             enabled = false;
+        }
+
+        private void ProcessDamageEvent(TookDamageEvent data)
+        {
+            var newEvent = new UpdatePointsEvent();
+
+            newEvent.Type = InteractionTypes.Shooting;
+            newEvent.Increase = true;
+            newEvent.Ammount = PointForDamage;
+
+            if (data.IsDead)
+                newEvent.Ammount += PointForKill;
+
+            MessageBroker.Default.Publish(newEvent);
         }
     }
 }
