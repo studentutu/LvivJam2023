@@ -37,9 +37,8 @@ namespace Jam.Scripts.BusEvents
         public void PlayBloodParticles()
         {
             int m_randSpawn = Random.Range(0, 3);
-            GameObject blood = Instantiate(m_bloodParticleSystem, m_bloodSpawnPoints[m_randSpawn].transform) as GameObject;
+            GameObject blood = Instantiate(m_bloodParticleSystem, m_bloodSpawnPoints[m_randSpawn].transform);
             blood.transform.position = m_bloodSpawnPoints[m_randSpawn].transform.position;
-            blood.transform.parent = m_bloodSpawnPoints[m_randSpawn].transform;
         }
     }
 }
