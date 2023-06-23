@@ -8,6 +8,7 @@ namespace Jam.Scripts.BusEvents.Misc
         [SerializeField] private float Speed = 0.3f;
         [SerializeField] private float BulletDamage = 0.3f;
         [SerializeField] private float Lifetime = 1f;
+        [SerializeField] private GameObject OnCollisionVFx;
         
         private void FixedUpdate()
         {
@@ -23,6 +24,9 @@ namespace Jam.Scripts.BusEvents.Misc
         {
             if(other.gameObject.CompareTag("Player"))
                 return;
+
+            if(OnCollisionVFx != null)
+                GameObject.Instantiate(OnCollisionVFx, transform.position, transform.rotation);
             
             if (other.gameObject.TryGetComponent<Health>(out var h))
             {

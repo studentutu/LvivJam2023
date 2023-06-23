@@ -15,15 +15,14 @@ namespace Jam.Scripts.BusEvents.Skins
             public InteractionTypes TypeForSkin;
         }
 
-        [SerializeField] private SkinnedMeshRenderer _renderer;
         [SerializeField] private List<SkinWithType> _skins = new List<SkinWithType>();
 
         private CompositeDisposable _disposable = new CompositeDisposable();
-        
+
         private void OnEnable()
         {
             MessageBroker.Default.Receive<ChangeInteractionEvent>()
-                .Subscribe(x =>ChangeSkin(x.Interaction))
+                .Subscribe(x => ChangeSkin(x.Interaction))
                 .AddTo(_disposable);
         }
 
@@ -35,11 +34,13 @@ namespace Jam.Scripts.BusEvents.Skins
 
         private void ChangeSkin(InteractionTypes type)
         {
-            var find = _skins.Find(x => x.TypeForSkin == type);
+            foreach (var skin in _skins)
+            {
+                skin._skin.gameObject.SetActive(false);
+            }
 
-            _renderer.sharedMesh = find._skin.sharedMesh;
-            _renderer.materials = find._skin.materials;
-            
+            var find = _skins.Find(x => x.TypeForSkin == type);
+            find._skin.gameObject.SetActive(true);
         }
     }
 }
