@@ -8,7 +8,8 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
     public class GrabItem : MonoBehaviour
     {
         public InteractionTypes UsedInInteraction;
-        
+        [Tooltip("From 0 to 100")]
+        public float DeltaStress = 2;
         public Collider collider;
         public Rigidbody _rb;
         public GameObject OnDestroyVFX;
@@ -43,6 +44,7 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
         public void Release()
         {
             collider.transform.SetParent(null, true);
+            MessageBroker.Default.Publish(new UpdateStressDataDeltaEvent() { Amount = DeltaStress});
         }
 
         private bool destroyed = false;
