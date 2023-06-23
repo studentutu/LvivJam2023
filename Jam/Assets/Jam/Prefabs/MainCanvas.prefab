@@ -520,8 +520,8 @@ MonoBehaviour:
     CurrentStress: 0
     CurrentPoints: 0
     TimeLeftSeconds: 240
-    MilitaryStress: 0
-    StorageStress: 0
+    MilitaryStress: 0.5
+    StorageStress: 0.5
 --- !u!1 &3188196012693212367
 GameObject:
   m_ObjectHideFlags: 0

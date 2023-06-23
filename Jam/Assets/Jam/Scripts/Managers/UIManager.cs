@@ -43,7 +43,9 @@ namespace Jam.Scripts.BusEvents
             _gameState = new GameState()
             {
                 Playing = false, CurrentStress = 0, CurrentPoints = 0,
-                TimeLeftSeconds = _InitialgameState.TimeLeftSeconds
+                TimeLeftSeconds = _InitialgameState.TimeLeftSeconds,
+                MilitaryStress = _InitialgameState.MilitaryStress,
+                StorageStress = _InitialgameState.StorageStress
             };
         }
 
