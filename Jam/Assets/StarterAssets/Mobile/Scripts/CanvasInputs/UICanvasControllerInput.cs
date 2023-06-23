@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace StarterAssets
+namespace UnityStarterAssets
 {
     public class UICanvasControllerInput : MonoBehaviour
     {
