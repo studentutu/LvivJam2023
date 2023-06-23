@@ -3059,6 +3059,8 @@ MonoBehaviour:
   Type: 1
   _bulletPrefab: {fileID: 8737902268081580506, guid: 808f3c9a8fc984f40a17e776f853a326, type: 3}
   SecondsBetweenShots: 0.2
+  PointForDamage: 10
+  PointForKill: 10
   spawnPoint: {fileID: 5906130193299758054}
   _shotClip: {fileID: 8300000, guid: f9517356afb533a41b9e7cb6f155031e, type: 3}
 --- !u!114 &6246097418802800884
