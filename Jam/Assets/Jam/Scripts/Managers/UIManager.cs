@@ -1,8 +1,12 @@
 ﻿using System;
+using Cysharp.Threading.Tasks;
 using Jam.Scripts.BusEvents.BusEvents.Interactions;
 using TMPro;
 using UniRx;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.SceneManagement;
+using UnityEngine.Scripting;
 using UnityEngine.UI;
 
 namespace Jam.Scripts.BusEvents
@@ -13,11 +17,11 @@ namespace Jam.Scripts.BusEvents
         public class GameState
         {
             public bool Playing = false;
-            public float CurrentStress;
+            [Tooltip("From 0 to 1")] public float CurrentStress;
             public float CurrentPoints;
-            public float TimeLeftSeconds;
-            public float MilitaryPoints;
-            public float VolonterPoints;
+            [Tooltip("60 is 1 minute")] public float TimeLeftSeconds;
+            [Tooltip("From 0 to 1")] public float MilitaryPoints;
+            [Tooltip("From 0 to 1")] public float VolonterPoints;
         }
 
         [SerializeField] private Slider _slider;
@@ -28,9 +32,33 @@ namespace Jam.Scripts.BusEvents
         [SerializeField] private TMP_Text _timeLeft;
         [SerializeField] private GameState _InitialgameState;
 
+        [Header("GameState")] 
+        public GameObject UIActiveGame;
+        public GameObject MainMenu;
+        public GameObject Restart;
+        
         private GameState _gameState = new GameState();
-
         private CompositeDisposable _disposable = new CompositeDisposable();
+
+        [Preserve]
+        public void OnStartPlay()
+        {
+            _gameState.Playing = true;
+            MessageBroker.Default.Publish(new StartPlayGameEvent());
+            UIActiveGame.gameObject.SetActive(true);
+            MainMenu.gameObject.SetActive(false);
+        }
+
+        [Preserve]
+        public void OnRestart()
+        {
+            LoadInitialScene().Forget();
+        }
+
+        private async UniTask LoadInitialScene()
+        {
+            await SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+        }
 
         private void OnEnable()
         {
@@ -39,14 +67,15 @@ namespace Jam.Scripts.BusEvents
             MessageBroker.Default.Receive<UpdatePointsEvent>()
                 .Subscribe(x => UpdatePoints(x))
                 .AddTo(_disposable);
-            
+
             MessageBroker.Default.Receive<UpdateStressDataDeltaEvent>()
                 .Subscribe(x => UpdateStress(x.Amount))
                 .AddTo(_disposable);
 
             _gameState = new GameState()
             {
-                Playing = false, CurrentStress = 0, CurrentPoints = 0,
+                Playing = false,
+                CurrentStress = 0, CurrentPoints = 0,
                 TimeLeftSeconds = _InitialgameState.TimeLeftSeconds,
                 MilitaryPoints = _InitialgameState.MilitaryPoints,
                 VolonterPoints = _InitialgameState.VolonterPoints
@@ -87,6 +116,9 @@ namespace Jam.Scripts.BusEvents
 
         private void Update()
         {
+            if (!_gameState.Playing)
+                return;
+
             _gameState.TimeLeftSeconds -= Time.deltaTime;
             var timeSpan = TimeSpan.FromSeconds(_gameState.TimeLeftSeconds).ToString(@"mm\:ss");
 
@@ -95,20 +127,29 @@ namespace Jam.Scripts.BusEvents
             _gameState.MilitaryPoints -= StressDelta * Time.deltaTime;
             _gameState.MilitaryPoints = Mathf.Clamp01(_gameState.MilitaryPoints);
             _sliderMilitary.value = _gameState.MilitaryPoints;
-            
+
             _gameState.VolonterPoints -= StressDelta * Time.deltaTime;
             _gameState.VolonterPoints = Mathf.Clamp01(_gameState.VolonterPoints);
             _sliderStorage.value = _gameState.VolonterPoints;
+
+            if (_gameState.MilitaryPoints <= 0 || _gameState.VolonterPoints <= 0 || _gameState.CurrentStress >= 1)
+            {
+                _gameState.Playing = false;
+                MessageBroker.Default.Publish(new EndGameEvent());
+                UIActiveGame.gameObject.SetActive(false);
+                Restart.gameObject.SetActive(true);
+                return;
+            }
 
             UpdateStress(-StressDelta * Time.deltaTime);
         }
 
         private void UpdateStress(float delta)
         {
-            _gameState.CurrentStress = Normalize (_gameState.CurrentStress, delta);
+            _gameState.CurrentStress = Normalize(_gameState.CurrentStress, delta);
             _slider.value = _gameState.CurrentStress;
-            
-            MessageBroker.Default.Publish(new NormalizedStressEvent { NormalizedStress = _gameState.CurrentStress});
+
+            MessageBroker.Default.Publish(new NormalizedStressEvent { NormalizedStress = _gameState.CurrentStress });
         }
     }
 }
