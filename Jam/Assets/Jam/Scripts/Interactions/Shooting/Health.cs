@@ -16,6 +16,7 @@ namespace Jam.Scripts.BusEvents
 
         void Awake()
         {
+            if(m_animator != null)
             m_animator.SetBool("Walk", true);
         }
 
