@@ -64,7 +64,7 @@ namespace Jam.Scripts.BusEvents
 
         private void UpdateStressLevel()
         {
-            var amount = StressDelta*Time.deltaTime;
+            var amount = StressDelta * Time.deltaTime;
             var increase = true;
 
             switch (CurrentInteraction)
@@ -77,8 +77,8 @@ namespace Jam.Scripts.BusEvents
                 case InteractionTypes.Helping:
                     break;
             }
-            
-            MessageBroker.Default.Publish(new UpdateStressEvent{Increase = increase, Ammount = amount});
+
+            MessageBroker.Default.Publish(new UpdateStressEvent { Increase = increase, Ammount = amount });
         }
     }
 }

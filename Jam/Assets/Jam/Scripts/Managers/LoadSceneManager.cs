@@ -54,16 +54,21 @@ namespace Jam.Scripts.BusEvents
 
         private async UniTask RemoveScene(AssetReference scene)
         {
-            if(_activeScenes.ContainsKey(scene.AssetGUID))
+            if (_activeScenes.ContainsKey(scene.AssetGUID))
                 _activeScenes[scene.AssetGUID].Counter--;
             await UniTask.DelayFrame(2);
-            
-            var checkIfNeedRelease = _activeScenes.ContainsKey(scene.AssetGUID) && _activeScenes[scene.AssetGUID].Counter < 1;
+
+            var checkIfNeedRelease =
+                _activeScenes.ContainsKey(scene.AssetGUID) && _activeScenes[scene.AssetGUID].Counter < 1;
 
             if (checkIfNeedRelease)
             {
-                var task = Addressables.UnloadSceneAsync(_activeScenes[scene.AssetGUID].SceneInstance);
-                await task;
+                if (_activeScenes[scene.AssetGUID].SceneInstance.Scene.IsValid())
+                {
+                    var task = Addressables.UnloadSceneAsync(_activeScenes[scene.AssetGUID].SceneInstance);
+                    await task;
+                }
+
                 _activeScenes.Remove(scene.AssetGUID);
             }
         }
@@ -77,8 +82,9 @@ namespace Jam.Scripts.BusEvents
                 return _activeScenes[scene.AssetGUID].SceneInstance;
             }
 
+            _activeScenes.Add(scene.AssetGUID, new SceneCounter { SceneInstance = default, Counter = 1 });
             var instance = await Addressables.LoadSceneAsync(scene, LoadSceneMode.Additive);
-            _activeScenes.Add(scene.AssetGUID, new SceneCounter{SceneInstance = instance, Counter =  1});
+            _activeScenes[scene.AssetGUID].SceneInstance = instance;
 
             return instance;
         }
