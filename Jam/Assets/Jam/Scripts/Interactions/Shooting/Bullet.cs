@@ -9,28 +9,32 @@ namespace Jam.Scripts.BusEvents.Misc
         [SerializeField] private float BulletDamage = 0.3f;
         [SerializeField] private float Lifetime = 1f;
         [SerializeField] private GameObject OnCollisionVFx;
-        
+        [SerializeField] private bool ImpactDamage = true;
+
         private void FixedUpdate()
         {
             var transform1 = transform;
-            transform1.position += transform1.forward* (Time.deltaTime * Speed);
+            transform1.position += transform1.forward * (Time.deltaTime * Speed);
 
             Lifetime -= Time.fixedDeltaTime;
-            if(Lifetime <=0)
+            if (Lifetime <= 0)
                 GameObject.Destroy(this.gameObject);
         }
 
         private void OnCollisionEnter(Collision other)
         {
-            if(other.gameObject.CompareTag("Player"))
+            if (other.gameObject.CompareTag("Player"))
                 return;
 
-            if(OnCollisionVFx != null)
+            if (OnCollisionVFx != null)
                 GameObject.Instantiate(OnCollisionVFx, transform.position, transform.rotation);
-            
-            if (other.gameObject.TryGetComponent<Health>(out var h))
+
+            if (ImpactDamage)
             {
-                h.TakeDamage(BulletDamage);
+                if (other.gameObject.TryGetComponent<Health>(out var h))
+                {
+                    h.TakeDamage(BulletDamage);
+                }
             }
 
             GameObject.Destroy(this.gameObject);
@@ -38,12 +42,14 @@ namespace Jam.Scripts.BusEvents.Misc
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.CompareTag("Player"))
+            if (other.gameObject.CompareTag("Player"))
                 return;
-            
-            if (other.gameObject.TryGetComponent<Health>(out var h))
+            if (ImpactDamage)
             {
-                h.TakeDamage(BulletDamage);
+                if (other.gameObject.TryGetComponent<Health>(out var h))
+                {
+                    h.TakeDamage(BulletDamage);
+                }
             }
 
             GameObject.Destroy(this.gameObject);
