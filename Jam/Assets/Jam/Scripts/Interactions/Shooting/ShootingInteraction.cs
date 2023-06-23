@@ -12,6 +12,7 @@ namespace Jam.Scripts.BusEvents
         [SerializeField] private float SecondsBetweenShots = 0.3f;
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private float StressUpdateDelta = 5f;
+        [SerializeField] private AudioClip _shotClip;
 
         private bool _canShoot;
         private float _shootCooldown;
@@ -29,6 +30,7 @@ namespace Jam.Scripts.BusEvents
 
             var bullet = GameObject.Instantiate(_bulletPrefab, spawnPoint.position, transform.rotation);
             bullet.transform.forward = spawnPoint.forward;
+            AudioSource.PlayClipAtPoint(_shotClip, spawnPoint.position);
             
             MessageBroker.Default.Publish(new UpdatePointsEvent{Increase = true, Type = InteractionTypes.Shooting,Ammount = StressUpdateDelta});
         }

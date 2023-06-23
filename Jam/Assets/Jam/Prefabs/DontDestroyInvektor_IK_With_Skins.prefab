@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cc: {fileID: 7604727856647808116}
-  MoveSpeed: 2
+  MoveSpeed: 5.335
   SprintSpeed: 5.335
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
@@ -2330,9 +2330,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   _bulletPrefab: {fileID: 8737902268081580506, guid: 808f3c9a8fc984f40a17e776f853a326, type: 3}
-  SecondsBetweenShots: 0.3
+  SecondsBetweenShots: 0.2
   spawnPoint: {fileID: 1027188821468302857}
-  StressUpdateDelta: 5
+  StressUpdateDelta: 20
+  _shotClip: {fileID: 8300000, guid: f9517356afb533a41b9e7cb6f155031e, type: 3}
 --- !u!114 &3569657293969384802
 MonoBehaviour:
   m_ObjectHideFlags: 0
