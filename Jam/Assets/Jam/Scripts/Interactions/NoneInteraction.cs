@@ -2,6 +2,11 @@
 {
     public class NoneInteraction :IInteraction
     {
+        public override bool IsInAction()
+        {
+            return true;
+        }
+
         public override void InteractionStart()
         {
             

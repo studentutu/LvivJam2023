@@ -48,10 +48,10 @@ namespace Jam.Scripts.BusEvents
             if (_currentInteraction == null)
                 return;
 
-            if (interactInUse && _currentInteraction.enabled)
+            if (interactInUse && _currentInteraction.IsInAction())
                 return;
 
-            if (!interactInUse && !_currentInteraction.enabled)
+            if (!interactInUse && !_currentInteraction.IsInAction())
                 return;
 
             if (interactInUse)
