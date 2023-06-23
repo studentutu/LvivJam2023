@@ -221,5 +221,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CrateType: 0
-  PointAmmountToReceive: 5
+  PointAmmountToReceive: 20
   _itemSelf: {fileID: 7800563544712281989}

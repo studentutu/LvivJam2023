@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Jam.Scripts.BusEvents.BusEvents.Interactions;
 using UnityStarterAssets;
 using UniRx;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Jam.Scripts.BusEvents
@@ -12,7 +13,7 @@ namespace Jam.Scripts.BusEvents
         public StarterAssetsInputs _input;
         public InteractionTypes CurrentInteraction;
         public List<IInteraction> Interactions = new List<IInteraction>();
-
+        public GameObject OnInteractionCHange;
 
         private CompositeDisposable _disposable = new();
         private IInteraction _currentInteraction;
@@ -33,6 +34,9 @@ namespace Jam.Scripts.BusEvents
 
         private void ChangeInteraction(InteractionTypes newInteraction)
         {
+            if (OnInteractionCHange != null)
+                GameObject.Instantiate(OnInteractionCHange, transform.position, quaternion.identity);
+            
             if (_currentInteraction != null)
                 _currentInteraction.InteractionStop(newInteraction);
 

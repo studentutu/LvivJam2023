@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Jam.Scripts.BusEvents.BusEvents.Interactions;
+using UniRx;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Jam.Scripts.BusEvents
@@ -12,11 +14,9 @@ namespace Jam.Scripts.BusEvents
         public float InitialHealth = 100;
         public UnityEvent OnDead;
         public UnityEvent OnTakeDamage;
-        [HideInInspector] public GameObject m_player;
 
         void Awake()
         {
-            m_player = GameObject.FindGameObjectWithTag("Player");
             m_animator.SetBool("Walk", true);
         }
 
@@ -26,18 +26,19 @@ namespace Jam.Scripts.BusEvents
             OnTakeDamage?.Invoke();
             PlayBloodParticles();
             
+            MessageBroker.Default.Publish(new UpdatePointsEvent{Increase = true, Type = InteractionTypes.Shooting, Ammount = damage});
             if(InitialHealth <=0)
                 OnDead?.Invoke();
             
             GameObject.Destroy(this.gameObject);
+            
         }
         
         public void PlayBloodParticles()
         {
             int m_randSpawn = Random.Range(0, 3);
-            GameObject blood = Instantiate(m_bloodParticleSystem, m_bloodSpawnPoints[m_randSpawn].transform) as GameObject;
+            GameObject blood = Instantiate(m_bloodParticleSystem, m_bloodSpawnPoints[m_randSpawn].transform);
             blood.transform.position = m_bloodSpawnPoints[m_randSpawn].transform.position;
-            blood.transform.parent = m_bloodSpawnPoints[m_randSpawn].transform;
         }
     }
 }
