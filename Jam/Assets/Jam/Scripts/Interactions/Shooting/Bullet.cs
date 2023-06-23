@@ -19,9 +19,25 @@ namespace Jam.Scripts.BusEvents.Misc
                 GameObject.Destroy(this.gameObject);
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter(Collision other)
         {
-            if (collision.gameObject.TryGetComponent<Health>(out var h))
+            if(other.gameObject.CompareTag("Player"))
+                return;
+            
+            if (other.gameObject.TryGetComponent<Health>(out var h))
+            {
+                h.TakeDamage(BulletDamage);
+            }
+
+            GameObject.Destroy(this.gameObject);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.gameObject.CompareTag("Player"))
+                return;
+            
+            if (other.gameObject.TryGetComponent<Health>(out var h))
             {
                 h.TakeDamage(BulletDamage);
             }
