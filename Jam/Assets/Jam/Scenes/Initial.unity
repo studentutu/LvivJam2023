@@ -1591,11 +1591,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1902528671700902342, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
       propertyPath: StressForShot
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1902528671700902342, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
       propertyPath: PointForDamage
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6105923758463724747, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
       propertyPath: m_RootOrder
@@ -2274,7 +2274,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4947331122350496576, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
       propertyPath: StressDelta
-      value: 0.0001
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947331122350496576, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
+      propertyPath: DownPointMilitary
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947331122350496576, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
+      propertyPath: DownPointVolontery
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6008960660905970634, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
       propertyPath: m_Pivot.x
