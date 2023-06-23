@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Jam/Assets/01Pack_Low Poly Forklift/Materials.meta
 guid: feeddabb4891d9d48b58bce6e755ad55
 folderAsset: yes
+========
+guid: 53818806613d2954390cf7195a4a49af
+timeCreated: 1504960569
+licenseType: Store
+>>>>>>>> Zhuchenko:Jam/Assets/BrokenVector/LowPolyStoragePack/Example.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
