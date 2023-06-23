@@ -512,7 +512,7 @@ MonoBehaviour:
   _slider: {fileID: 7051602145853665858}
   _sliderMilitary: {fileID: 2891627028678341772}
   _sliderStorage: {fileID: 1496838488452051319}
-  StressDelta: 2
+  StressDelta: 0.1
   _points: {fileID: 6539270541284556446}
   _timeLeft: {fileID: 2408699720064112991}
   _InitialgameState:
