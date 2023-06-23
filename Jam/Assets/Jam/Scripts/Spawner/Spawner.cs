@@ -21,7 +21,7 @@ namespace Jam.Scripts.Spawner
             var timeOut = Random.Range(2, _TimeOut);
             var randomInBounds = GetRandomPointInsideCollider( BOunds);
             
-            GameObject.Instantiate(_prefab, randomInBounds, transform.rotation, transform);
+            GameObject.Instantiate(_prefab, randomInBounds, transform.rotation, transform.parent);
 
             while (timeOut>0)
             {
