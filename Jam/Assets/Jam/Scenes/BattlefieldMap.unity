@@ -652,6 +652,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnPoint_Red (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1082929756026282329, guid: 515866e2f8ec64d4186a490578babbf7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2325698433514268843, guid: 515866e2f8ec64d4186a490578babbf7, type: 3}
       propertyPath: _prefab
       value: 
@@ -2344,6 +2348,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1456616397176492, guid: fd3a5b9227e7c8843a8de768604b4ea4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4031648475909992, guid: fd3a5b9227e7c8843a8de768604b4ea4, type: 3}
       propertyPath: m_LocalRotation.w
       value: -0.31946686
@@ -3591,6 +3599,10 @@ PrefabInstance:
     - target: {fileID: 8844314270370011264, guid: 0dae368a9c91d0144ba7aa8d2b6fdff5, type: 3}
       propertyPath: m_Name
       value: Zombie_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844314270370011264, guid: 0dae368a9c91d0144ba7aa8d2b6fdff5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
