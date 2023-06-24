@@ -3342,6 +3342,14 @@ PrefabInstance:
       propertyPath: DownPointVolontery
       value: 0.025
       objectReference: {fileID: 0}
+    - target: {fileID: 4947331122350496576, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
+      propertyPath: _InitialgameState.CurrentStress
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947331122350496576, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
+      propertyPath: _InitialgameState.TimeLeftSeconds
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 6008960660905970634, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
       propertyPath: m_Pivot.x
       value: 0
