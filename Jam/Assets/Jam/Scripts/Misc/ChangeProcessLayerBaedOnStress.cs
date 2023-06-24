@@ -2,13 +2,12 @@
 using UniRx;
 using UnityEngine;
 using UnityEngine.Rendering;
-using UnityEngine.Rendering.PostProcessing;
 
 namespace Jam.Scripts.Misc
 {
     public class ChangeProcessLayerBaedOnStress : MonoBehaviour
     {
-        [SerializeField] public PostProcessVolume _cameraVolume;
+        [SerializeField] public Volume _cameraVolume;
         
         private CompositeDisposable _disposable = new CompositeDisposable();
 
