@@ -27,8 +27,10 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
                 return;
 
             _interactingWith = _CurrentInContact.GetComponent<GrabItem>();
-            if (_interactingWith == null)
+            
+            if (_interactingWith == null )
                 return;
+            
             _interactingWith.AttachTo(AttachToPoint);
         }
 
@@ -45,14 +47,6 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
                 _interactingWith.TryDestroy();
 
             _interactingWith = null;
-        }
-
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (_interactingWith != null)
-                return;
-
-            _CurrentInContact = collision.gameObject;
         }
 
         private void OnTriggerEnter(Collider other)

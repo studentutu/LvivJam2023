@@ -9,7 +9,7 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
     {
         public CrateType CrateType;
         [SerializeField] private float PointAmmountToReceive;
-        [SerializeField] private GrabItem _itemSelf;
+        [SerializeField] public GrabItem _itemSelf;
 
         private void OnTriggerEnter(Collider other)
         {

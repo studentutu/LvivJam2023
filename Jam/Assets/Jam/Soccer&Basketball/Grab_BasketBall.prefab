@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f9fa5957014879a45d61691dbfeded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsedInInteraction: 2
-  DeltaStress: 10
-  collider: {fileID: 0}
-  _rb: {fileID: 0}
+  UsedInInteraction: 0
+  DeltaStress: -10
+  collider: {fileID: 2700849787568528593}
+  _rb: {fileID: 7665149583949574384}
   OnDestroyVFX: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
 --- !u!135 &8370110121090021742
 SphereCollider:
@@ -105,7 +105,7 @@ Transform:
   - {fileID: 5622105049929557272}
   - {fileID: 148934499404619186}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &7665149583949574384
 Rigidbody:
@@ -146,9 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11232dfb6c994fa5b33aad0ba89f571a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CrateType: 0
+  CrateType: 3
   PointAmmountToReceive: 20
-  _itemSelf: {fileID: 0}
+  _itemSelf: {fileID: 1441872091515753432}
 --- !u!135 &2700849787568528593
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -156,7 +156,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7652906267425761946}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a47766bc42dafaf4a99724f92f9d7f8a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0

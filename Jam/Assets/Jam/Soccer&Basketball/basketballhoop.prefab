@@ -295,8 +295,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6127488966829284215}
-  - component: {fileID: 3683799483804859407}
-  - component: {fileID: 2024436411277865428}
   m_Layer: 0
   m_Name: basketballhoop
   m_TagString: Untagged
@@ -318,52 +316,10 @@ Transform:
   m_Children:
   - {fileID: 8512444246495679661}
   - {fileID: 2031330010511066924}
+  - {fileID: 4945796158969639801}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &3683799483804859407
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6442849168071608021}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
---- !u!65 &2024436411277865428
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6442849168071608021}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.9703174, y: 10.644457, z: 3.0095856}
-  m_Center: {x: 0.9851589, y: 4.82223, z: 0.03844559}
 --- !u!1 &9219915486198624385
 GameObject:
   m_ObjectHideFlags: 0
@@ -449,3 +405,85 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &1891447282910901120
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6127488966829284215}
+    m_Modifications:
+    - target: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.4099455
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7.142091
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.3228445
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.470318
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.6597497
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.026849618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134118868120513916, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: m_Name
+      value: DropCrateZone_basketball
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535440897742795136, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+      propertyPath: CrateType
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+--- !u!4 &4945796158969639801 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6817669385581773049, guid: e5b9bb4d30a26894187798813042deba, type: 3}
+  m_PrefabInstance: {fileID: 1891447282910901120}
+  m_PrefabAsset: {fileID: 0}

@@ -32,10 +32,10 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
 
         public void AttachTo( Transform parent)
         {
+            _rb.isKinematic = true;
             collider.transform.SetParent(parent, true);
             collider.transform.localPosition = Vector3.zero;
             collider.transform.localRotation = Quaternion.identity;
-            _rb.isKinematic = true;
         }
 
         public void Release()
