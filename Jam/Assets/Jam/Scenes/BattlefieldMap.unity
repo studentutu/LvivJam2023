@@ -2097,10 +2097,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2135425639519114485, guid: 96f970bfca18c9c40abfaedc733e7907, type: 3}
+      propertyPath: m_Size.x
+      value: 1.596611
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135425639519114485, guid: 96f970bfca18c9c40abfaedc733e7907, type: 3}
+      propertyPath: m_Size.y
+      value: 3.062369
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135425639519114485, guid: 96f970bfca18c9c40abfaedc733e7907, type: 3}
+      propertyPath: m_Center.x
+      value: -1.8357353
+      objectReference: {fileID: 0}
+    - target: {fileID: 2135425639519114485, guid: 96f970bfca18c9c40abfaedc733e7907, type: 3}
+      propertyPath: m_Center.y
+      value: 1.0311846
+      objectReference: {fileID: 0}
     - target: {fileID: 4621350640427073896, guid: 96f970bfca18c9c40abfaedc733e7907, type: 3}
       propertyPath: m_Name
       value: EnvirStatikBattledieldMap
       objectReference: {fileID: 0}
+    - target: {fileID: 8925017625295485404, guid: 96f970bfca18c9c40abfaedc733e7907, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 6fca1ad2876f52548aa16f5b55cb1377, type: 2}
     - target: {fileID: 9174054487234791386, guid: 96f970bfca18c9c40abfaedc733e7907, type: 3}
       propertyPath: m_RootOrder
       value: 4
