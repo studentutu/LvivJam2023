@@ -31,13 +31,14 @@ namespace Jam.Scripts.BusEvents
         [SerializeField] private float DownPointVolontery = 1f;
         [SerializeField] private TMP_Text _points;
         [SerializeField] private TMP_Text _timeLeft;
+        [SerializeField] private TMP_Text _winPoints;
         [SerializeField] private GameState _InitialgameState;
 
-        [Header("GameState")] 
-        public GameObject UIActiveGame;
+        [Header("GameState")] public GameObject UIActiveGame;
         public GameObject MainMenu;
         public GameObject Restart;
-        
+        public GameObject Win;
+
         private GameState _gameState = new GameState();
         private CompositeDisposable _disposable = new CompositeDisposable();
 
@@ -133,12 +134,24 @@ namespace Jam.Scripts.BusEvents
             _gameState.VolonterPoints = Mathf.Clamp01(_gameState.VolonterPoints);
             _sliderStorage.value = _gameState.VolonterPoints;
 
-            if (_gameState.MilitaryPoints <= 0 || _gameState.VolonterPoints <= 0 || _gameState.CurrentStress >= 1 || _gameState.TimeLeftSeconds <0)
+            var failed = _gameState.MilitaryPoints <= 0 || _gameState.VolonterPoints <= 0 ||
+                         _gameState.CurrentStress >= 1;
+            var timeUp = _gameState.TimeLeftSeconds <= 0;
+
+            if (failed || timeUp)
             {
                 _gameState.Playing = false;
                 MessageBroker.Default.Publish(new EndGameEvent());
                 UIActiveGame.gameObject.SetActive(false);
                 Restart.gameObject.SetActive(true);
+
+                if (timeUp && !failed)
+                {
+                    _winPoints.text = $"Score: {_gameState.CurrentPoints.ToString("F1")}";
+                    Restart.gameObject.SetActive(false);
+                    Win.gameObject.SetActive(true);
+                }
+
                 return;
             }
 
