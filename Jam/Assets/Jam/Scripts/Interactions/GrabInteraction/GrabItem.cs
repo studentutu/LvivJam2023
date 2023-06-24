@@ -15,11 +15,13 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
         public GameObject OnDestroyVFX;
         public bool UseImulse;
         public Vector3 ImpulseDirection;
+        public bool IsInUse = false;
         
         private CompositeDisposable _disposable = new CompositeDisposable();
 
         private void OnEnable()
         {
+            IsInUse = false;
             MessageBroker.Default.Receive<ChangeInteractionEvent>().Subscribe(x =>
             {
                 if (x.Interaction != UsedInInteraction)
@@ -34,6 +36,7 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
 
         public void AttachTo( Transform parent)
         {
+            IsInUse = true;
             _rb.isKinematic = true;
             collider.transform.SetParent(parent, true);
             collider.transform.localPosition = Vector3.zero;
@@ -42,6 +45,8 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
 
         public void Release()
         {
+            IsInUse = false;
+
             collider.transform.SetParent(null, true);
             MessageBroker.Default.Publish(new UpdateStressDataDeltaEvent() { Amount = DeltaStress});
         }
@@ -49,6 +54,7 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
         private bool destroyed = false;
         public void TryDestroy()
         {
+            IsInUse = false;
             if(destroyed)
                return;
             
