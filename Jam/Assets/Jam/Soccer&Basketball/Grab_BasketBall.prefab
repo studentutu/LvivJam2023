@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CrateType: 3
-  PointAmmountToReceive: 20
+  PointAmmountToReceive: -20
   _itemSelf: {fileID: 1441872091515753432}
 --- !u!135 &2700849787568528593
 SphereCollider:
