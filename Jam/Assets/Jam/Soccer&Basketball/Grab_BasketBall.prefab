@@ -50,6 +50,8 @@ MonoBehaviour:
   collider: {fileID: 2700849787568528593}
   _rb: {fileID: 7665149583949574384}
   OnDestroyVFX: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
+  UseImulse: 1
+  ImpulseDirection: {x: 0, y: 1, z: 0}
 --- !u!135 &8370110121090021742
 SphereCollider:
   m_ObjectHideFlags: 0
