@@ -22,7 +22,10 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
             MessageBroker.Default.Publish(
                 new UpdatePointsEvent { Increase = true,Type = _itemSelf.UsedInInteraction,Ammount = PointAmmountToReceive });
 
-            _itemSelf.Release();
+            if (_itemSelf.IsInUse)
+            {
+                _itemSelf.Release();
+            }
             _itemSelf.TryDestroy();
         }
     }
