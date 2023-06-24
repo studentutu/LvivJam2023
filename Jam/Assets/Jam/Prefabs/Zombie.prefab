@@ -1174,7 +1174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_animator: {fileID: 0}
-  m_bloodParticleSystem: {fileID: 1005937657343150, guid: cbe19ab63938c16498f0457cfa42f8f7, type: 3}
+  m_bloodParticleSystem: {fileID: 1005937657343150, guid: cbe19ab63938c16498f0457cfa42f8f7,
+    type: 3}
   m_bloodSpawnPoints:
   - {fileID: 1436613591901006}
   - {fileID: 1160414804206326}

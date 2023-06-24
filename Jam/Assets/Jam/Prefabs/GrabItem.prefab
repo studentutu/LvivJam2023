@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UsedInInteraction: 2
-  DeltaStress: 10
+  DeltaStress: 30
   collider: {fileID: 8951193794717822573}
   _rb: {fileID: 7864170564992402128}
   OnDestroyVFX: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
