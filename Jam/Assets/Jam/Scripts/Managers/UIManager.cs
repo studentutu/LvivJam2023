@@ -133,7 +133,7 @@ namespace Jam.Scripts.BusEvents
             _gameState.VolonterPoints = Mathf.Clamp01(_gameState.VolonterPoints);
             _sliderStorage.value = _gameState.VolonterPoints;
 
-            if (_gameState.MilitaryPoints <= 0 || _gameState.VolonterPoints <= 0 || _gameState.CurrentStress >= 1)
+            if (_gameState.MilitaryPoints <= 0 || _gameState.VolonterPoints <= 0 || _gameState.CurrentStress >= 1 || _gameState.TimeLeftSeconds <0)
             {
                 _gameState.Playing = false;
                 MessageBroker.Default.Publish(new EndGameEvent());

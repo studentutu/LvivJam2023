@@ -1256,6 +1256,7 @@ GameObject:
   - component: {fileID: 7105349814241234141}
   - component: {fileID: 5676724934181173279}
   - component: {fileID: 5148630612768599476}
+  - component: {fileID: 9106519903164144132}
   m_Layer: 8
   m_Name: PlayerArmature
   m_TagString: Player
@@ -1603,6 +1604,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 2
+  AttachToPoint: {fileID: 5906130193299758054}
+  Force: 5
+--- !u!114 &9106519903164144132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4039409485841670786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1c4e448506b4843b4f70d48559dc71f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 0
   AttachToPoint: {fileID: 5906130193299758054}
   Force: 5
 --- !u!1 &4083387703960464608
@@ -3054,7 +3070,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5906130193299758054}
   m_Layer: 8
-  m_Name: Weapon
+  m_Name: GrabAttach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3424,7 +3440,6 @@ GameObject:
   - component: {fileID: 1650560602285930720}
   - component: {fileID: 5304335556962948696}
   - component: {fileID: 1902528671700902342}
-  - component: {fileID: 6246097418802800884}
   - component: {fileID: 6070070437669204604}
   m_Layer: 0
   m_Name: DontDestroyInvektor_IK_With_Skins
@@ -3480,7 +3495,7 @@ MonoBehaviour:
   CurrentInteraction: 0
   Interactions:
   - {fileID: 1902528671700902342}
-  - {fileID: 6246097418802800884}
+  - {fileID: 9106519903164144132}
   - {fileID: 5148630612768599476}
   OnInteractionCHange: {fileID: 100000, guid: 979632a27455af442bd2d8f36eb0ffce, type: 3}
 --- !u!114 &1902528671700902342
@@ -3503,19 +3518,6 @@ MonoBehaviour:
   StressForShot: 3
   spawnPoint: {fileID: 5906130193299758054}
   _shotClip: {fileID: 8300000, guid: f9517356afb533a41b9e7cb6f155031e, type: 3}
---- !u!114 &6246097418802800884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7574584472968334562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1c4e448506b4843b4f70d48559dc71f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Type: 0
 --- !u!114 &6070070437669204604
 MonoBehaviour:
   m_ObjectHideFlags: 0
