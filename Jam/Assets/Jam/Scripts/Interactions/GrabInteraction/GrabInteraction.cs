@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 namespace Jam.Scripts.BusEvents.GrabInteraction
 {
@@ -27,10 +28,10 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
                 return;
 
             _interactingWith = _CurrentInContact.GetComponent<GrabItem>();
-            
-            if (_interactingWith == null )
+
+            if (_interactingWith == null)
                 return;
-            
+
             _interactingWith.AttachTo(AttachToPoint);
         }
 
@@ -41,9 +42,17 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
 
             _interactingWith.Release();
             _interactingWith._rb.isKinematic = false;
-            _interactingWith._rb.AddForce(AttachToPoint.forward * Force, ForceMode.Impulse);
+            var direction = _interactingWith.ImpulseDirection;
+            var force = AttachToPoint.forward * Force;
 
-            if(possibleNewZone != Type)
+            if (_interactingWith.UseImulse)
+            {
+                force = (AttachToPoint.forward + direction) * Force;
+            }
+
+            _interactingWith._rb.AddForce(force, ForceMode.Impulse);
+
+            if (possibleNewZone != Type)
                 _interactingWith.TryDestroy();
 
             _interactingWith = null;

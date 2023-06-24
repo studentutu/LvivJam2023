@@ -40,19 +40,19 @@ namespace Jam.Scripts.BusEvents.Misc
             GameObject.Destroy(this.gameObject);
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.CompareTag("Player"))
-                return;
-            if (ImpactDamage)
-            {
-                if (other.gameObject.TryGetComponent<Health>(out var h))
-                {
-                    h.TakeDamage(BulletDamage);
-                }
-            }
-
-            GameObject.Destroy(this.gameObject);
-        }
+        // private void OnTriggerEnter(Collider other)
+        // {
+        //     if (other.gameObject.CompareTag("Player"))
+        //         return;
+        //     if (ImpactDamage)
+        //     {
+        //         if (other.gameObject.TryGetComponent<Health>(out var h))
+        //         {
+        //             h.TakeDamage(BulletDamage);
+        //         }
+        //     }
+        //
+        //     GameObject.Destroy(this.gameObject);
+        // }
     }
 }

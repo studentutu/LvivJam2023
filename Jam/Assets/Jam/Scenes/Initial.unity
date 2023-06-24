@@ -2330,9 +2330,13 @@ PrefabInstance:
       propertyPath: JumpHeight
       value: 2.2
       objectReference: {fileID: 0}
-    - target: {fileID: 1902528671700902342, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
-      propertyPath: StressForShot
-      value: 2.5
+    - target: {fileID: 5229736296922037439, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
+      propertyPath: canPush
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5229736296922037439, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
+      propertyPath: pushLayers.m_Bits
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6105923758463724747, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
       propertyPath: m_RootOrder
@@ -2389,10 +2393,6 @@ PrefabInstance:
     - target: {fileID: 7679226695471297427, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9106519903164144132, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
-      propertyPath: Force
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

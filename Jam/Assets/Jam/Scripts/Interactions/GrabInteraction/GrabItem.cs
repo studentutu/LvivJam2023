@@ -13,6 +13,8 @@ namespace Jam.Scripts.BusEvents.GrabInteraction
         public Collider collider;
         public Rigidbody _rb;
         public GameObject OnDestroyVFX;
+        public bool UseImulse;
+        public Vector3 ImpulseDirection;
         
         private CompositeDisposable _disposable = new CompositeDisposable();
 
