@@ -1923,7 +1923,7 @@ RectTransform:
   - {fileID: 2918165682030869959}
   - {fileID: 2930247409768036074}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2009,8 +2009,8 @@ MonoBehaviour:
   _sliderMilitary: {fileID: 2891627028678341772}
   _sliderStorage: {fileID: 1496838488452051319}
   StressDelta: 3.5
-  DownPointMilitary: 0.025
-  DownPointVolontery: 0.025
+  DownPointMilitary: 0.02
+  DownPointVolontery: 0.02
   _points: {fileID: 6539270541284556446}
   _timeLeft: {fileID: 2408699720064112991}
   _winPoints: {fileID: 3826558778461522871}
@@ -2018,7 +2018,7 @@ MonoBehaviour:
     Playing: 0
     CurrentStress: 0.2
     CurrentPoints: 0
-    TimeLeftSeconds: 120
+    TimeLeftSeconds: 60
     MilitaryPoints: 0.5
     VolonterPoints: 0.5
   UIActiveGame: {fileID: 5035851053988743323}

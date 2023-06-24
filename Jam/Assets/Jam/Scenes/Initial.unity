@@ -753,6 +753,67 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!1001 &455144361
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2059947696328447721, guid: d43fbf1c9660e0247a94a8a556e48dc2, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059947696328447721, guid: d43fbf1c9660e0247a94a8a556e48dc2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -174.94617
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059947696328447721, guid: d43fbf1c9660e0247a94a8a556e48dc2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -993.92523
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059947696328447721, guid: d43fbf1c9660e0247a94a8a556e48dc2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1232.7249
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059947696328447721, guid: d43fbf1c9660e0247a94a8a556e48dc2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059947696328447721, guid: d43fbf1c9660e0247a94a8a556e48dc2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059947696328447721, guid: d43fbf1c9660e0247a94a8a556e48dc2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059947696328447721, guid: d43fbf1c9660e0247a94a8a556e48dc2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059947696328447721, guid: d43fbf1c9660e0247a94a8a556e48dc2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059947696328447721, guid: d43fbf1c9660e0247a94a8a556e48dc2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059947696328447721, guid: d43fbf1c9660e0247a94a8a556e48dc2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6083188980246543753, guid: d43fbf1c9660e0247a94a8a556e48dc2, type: 3}
+      propertyPath: m_Name
+      value: Global Volume
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d43fbf1c9660e0247a94a8a556e48dc2, type: 3}
 --- !u!1 &515672836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2326,6 +2387,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 801628201091963499, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
+      propertyPath: m_StopNaN
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 801628201091963499, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
+      propertyPath: m_RenderPostProcessing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1866907805905985244, guid: 079eda139657ab0428a15bba2fb64480, type: 3}
       propertyPath: JumpHeight
       value: 2.2
@@ -3329,26 +3398,6 @@ PrefabInstance:
     - target: {fileID: 2893054379541253401, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
       propertyPath: m_Name
       value: MainCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 4947331122350496576, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
-      propertyPath: StressDelta
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4947331122350496576, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
-      propertyPath: DownPointMilitary
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 4947331122350496576, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
-      propertyPath: DownPointVolontery
-      value: 0.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 4947331122350496576, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
-      propertyPath: _InitialgameState.CurrentStress
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4947331122350496576, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
-      propertyPath: _InitialgameState.TimeLeftSeconds
-      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6008960660905970634, guid: de9135a2fa8c5d14da62f976decb7aca, type: 3}
       propertyPath: m_Pivot.x
