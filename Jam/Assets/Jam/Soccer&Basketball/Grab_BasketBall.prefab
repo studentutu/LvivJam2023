@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5622105049929557272}
   - component: {fileID: 1441872091515753432}
   - component: {fileID: 8370110121090021742}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 7665149583949574384}
   - component: {fileID: 3282177372559939638}
   - component: {fileID: 2700849787568528593}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Grab_BasketBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ Transform:
   - {fileID: 5622105049929557272}
   - {fileID: 148934499404619186}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &7665149583949574384
 Rigidbody:
@@ -237,6 +237,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6238ea300d7a7bc499959fd55386889a, type: 3}
       propertyPath: m_Name
       value: basketball_FBX
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6238ea300d7a7bc499959fd55386889a, type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

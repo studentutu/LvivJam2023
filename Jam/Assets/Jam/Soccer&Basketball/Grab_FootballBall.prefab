@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5356348559692684073}
   - component: {fileID: 162087714832553709}
   - component: {fileID: 2431553479764793137}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Grab_FootballBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4662804220669041379}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.471, z: -2.577}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6818, y: 0.6818, z: 0.6818}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6980191719105822613}
@@ -75,9 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11232dfb6c994fa5b33aad0ba89f571a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CrateType: 0
-  PointAmmountToReceive: 20
-  _itemSelf: {fileID: 0}
+  CrateType: 4
+  PointAmmountToReceive: -20
+  _itemSelf: {fileID: 6488003755926986251}
 --- !u!135 &2431553479764793137
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -85,7 +85,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4662804220669041379}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 432080eddf3bc2449a2c54573812900e, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -109,8 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6980191719105822613}
   - component: {fileID: 6488003755926986251}
-  - component: {fileID: 1517712917503489088}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,32 +143,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f9fa5957014879a45d61691dbfeded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsedInInteraction: 2
-  DeltaStress: 10
-  collider: {fileID: 0}
-  _rb: {fileID: 0}
+  UsedInInteraction: 0
+  DeltaStress: -10
+  collider: {fileID: 2431553479764793137}
+  _rb: {fileID: 5356348559692684073}
   OnDestroyVFX: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}
---- !u!135 &1517712917503489088
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7806260561476872766}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.01
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &203796923958158140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -234,9 +212,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7544083735645658275, guid: d05928a6bd591c34389ee1204723ace4, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -5525380005753893801, guid: d05928a6bd591c34389ee1204723ace4, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d05928a6bd591c34389ee1204723ace4, type: 3}
       propertyPath: m_Name
       value: FootballBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d05928a6bd591c34389ee1204723ace4, type: 3}
+      propertyPath: m_Layer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3124348886353998560, guid: d05928a6bd591c34389ee1204723ace4, type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

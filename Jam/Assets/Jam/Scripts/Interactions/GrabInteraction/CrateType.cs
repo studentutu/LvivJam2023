@@ -5,6 +5,7 @@
         Red,
         Green,
         Blue,
-        Basketball
+        Basketball,
+        Football
     }
 }

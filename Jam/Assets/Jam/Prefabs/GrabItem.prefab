@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 487161662161251720}
   - component: {fileID: 3298082080895203500}
   - component: {fileID: 7800563544712281989}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 7864170564992402128}
   - component: {fileID: 8040448134171097036}
   - component: {fileID: 8951193794717822573}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: GrabItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,6 +235,10 @@ PrefabInstance:
     - target: {fileID: 194808, guid: 4af2e69a3f0348b44a982423be88c83d, type: 3}
       propertyPath: m_Name
       value: Crate_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 194808, guid: 4af2e69a3f0348b44a982423be88c83d, type: 3}
+      propertyPath: m_Layer
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 486008, guid: 4af2e69a3f0348b44a982423be88c83d, type: 3}
       propertyPath: m_RootOrder
