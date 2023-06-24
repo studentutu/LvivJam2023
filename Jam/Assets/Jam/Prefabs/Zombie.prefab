@@ -1065,7 +1065,6 @@ GameObject:
   - component: {fileID: 4215983090858412}
   - component: {fileID: 54214124790015346}
   - component: {fileID: 136901979377959124}
-  - component: {fileID: 135942970535976662}
   - component: {fileID: 4149788826975662182}
   - component: {fileID: 1097392991594697510}
   - component: {fileID: 3797312829955119806}
@@ -1162,27 +1161,6 @@ CapsuleCollider:
   m_Height: 1.7070915
   m_Direction: 1
   m_Center: {x: 0.015301142, y: 0.8240393, z: 0.31206}
---- !u!135 &135942970535976662
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456616397176492}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 1.17
-  m_Center: {x: 0.0011971262, y: 0.7872341, z: 0.27409554}
 --- !u!114 &4149788826975662182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1196,7 +1174,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_animator: {fileID: 0}
-  m_bloodParticleSystem: {fileID: 1005937657343150, guid: cbe19ab63938c16498f0457cfa42f8f7, type: 3}
+  m_bloodParticleSystem: {fileID: 1005937657343150, guid: cbe19ab63938c16498f0457cfa42f8f7,
+    type: 3}
   m_bloodSpawnPoints:
   - {fileID: 1436613591901006}
   - {fileID: 1160414804206326}

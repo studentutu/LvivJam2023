@@ -63,7 +63,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -126,7 +126,8 @@ MonoBehaviour:
   Speed: 50
   BulletDamage: 50
   Lifetime: 2
-  OnCollisionVFx: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7, type: 3}
+  OnCollisionVFx: {fileID: 4021103657954561961, guid: 5c755f9bc5253ea418e919994537dcc7,
+    type: 3}
   ImpactDamage: 1
 --- !u!54 &2884311631783029110
 Rigidbody:
